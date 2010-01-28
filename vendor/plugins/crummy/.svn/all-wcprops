@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/autanasbavi/!svn/ver/37/trunk/vendor/plugins/crummy
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/autanasbavi/!svn/ver/37/trunk/vendor/plugins/crummy/Rakefile
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/autanasbavi/!svn/ver/37/trunk/vendor/plugins/crummy/.gitignore
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/autanasbavi/!svn/ver/37/trunk/vendor/plugins/crummy/init.rb
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/autanasbavi/!svn/ver/37/trunk/vendor/plugins/crummy/MIT-LICENSE
+END
+README.textile
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/autanasbavi/!svn/ver/37/trunk/vendor/plugins/crummy/README.textile
+END

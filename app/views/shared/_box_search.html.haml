@@ -1,0 +1,16 @@
+.box
+  .h
+    %h3 Vyhledávání
+  .in.search
+    - form_tag search_path, :method => 'get', :class => 'formBox' do
+      %fieldset
+        .clearfix
+          %input{ :type => "radio", :name => "type_search", :id => "search_all", :value => "all", :checked => "checked" }
+          %label{ :for => 'search_all' }Vše
+          %input{ :type => "radio", :name => "type_search", :id => "search_schools", :value => "schools" }
+          %label{ :for => 'search_schools' }Školy
+          %input{ :type => "radio", :name => "type_search", :id => "search_spheres", :value => "sections" }
+          %label{ :for => 'search_spheres' }Obory
+        .clearfix
+          = text_field_tag :search, params[:search], :id => 'search_phrase', :value => 'Zadejte hledaný výraz', :class => 'button'
+          = submit_tag "hledej", :name => nil, :class => 'submit'

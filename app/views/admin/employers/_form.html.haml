@@ -1,0 +1,82 @@
+%br
+%br
+%p  
+  = f.label :name, 'Název:'
+  %br
+  = f.text_area :name, :cols => "65", :rows => "3"  
+%p
+  = f.label :anotation, 'Perex:'
+  %br 
+  = f.text_area :anotation, :cols => "65", :rows => "10"
+%p  
+  = f.label :street1, 'Ulice1:'
+  %br
+  = f.text_field :street1
+%p  
+  = f.label :street2, 'Ulice2:'
+  %br
+  = f.text_field :street2  
+%p  
+  = f.label :town, 'Město:'
+  %br
+  = f.text_field :town
+%p  
+  = f.label :zip_code, 'PSČ:'
+  %br
+  = f.text_field :zip_code
+%p  
+  = f.label :email1, 'Email 1:'
+  %br
+  = f.text_field :email1
+%p  
+  = f.label :email2, 'Email 2:'
+  %br
+  = f.text_field :email2
+%p  
+  = f.label :www1, 'Web 1:'
+  %br
+  = f.text_field :www1
+%p  
+  = f.label :www2, 'Web 2:'
+  %br
+  = f.text_field :www2  
+%p  
+  = f.label :phone1, 'Telefon 1:'
+  %br
+  = f.text_field :phone1
+%p  
+  = f.label :phone2, 'Telefon 2:'
+  %br
+  = f.text_field :phone2 
+%p  
+  = f.label :fax1, 'Fax 1:'
+  %br
+  = f.text_field :fax1
+%p  
+  = f.label :fax2, 'Fax 2:'
+  %br
+  = f.text_field :fax2
+%p  
+  = f.label :ico, 'IČO:'
+  %br
+  = f.text_field :ico
+%p  
+  = f.label :dic, 'DIČ:'
+  %br
+  = f.text_field :dic    
+%br
+%br  
+%label{ :for => 'employer[kraj_kod]' }  Vyberte kraj:
+%br
+%select{:id => 'employer[kraj_kod]', :name => 'employer[kraj_kod]'}    
+  -@kraje.each do |kraj|
+    - if(@object.kraj_kod == kraj[0])
+      %option{:value => kraj[0], :selected => 'selected' }
+        = kraj[1]
+    - else
+      %option{:value => kraj[0] }
+        = kraj[1]
+%br
+%br
+%hr
+%br

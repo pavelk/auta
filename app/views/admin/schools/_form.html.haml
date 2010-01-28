@@ -1,0 +1,69 @@
+%br
+%br
+= params[:page]
+= hidden_field :page, :value => params[:page]
+%p  
+  = f.label :name, 'Název:'
+  %br
+  = f.text_area :name, :cols => "65", :rows => "3"  
+%p
+  = f.label :anotation, 'Anotace:'
+  %br 
+  = f.text_area :anotation, :cols => "65", :rows => "10"
+%p  
+  = f.label :street, 'Ulice:'
+  %br
+  = f.text_field :street
+%p  
+  = f.label :town, 'Město:'
+  %br
+  = f.text_field :town
+%p  
+  = f.label :zip_code, 'PSČ:'
+  %br
+  = f.text_field :zip_code
+%p  
+  = f.label :email1, 'Email 1:'
+  %br
+  = f.text_field :email1
+%p  
+  = f.label :email2, 'Email 2:'
+  %br
+  = f.text_field :email2
+%p  
+  = f.label :www, 'Web:'
+  %br
+  = f.text_field :www
+%p  
+  = f.label :phone, 'Telefon:'
+  %br
+  = f.text_field :phone
+%p  
+  = f.label :fax, 'Fax:'
+  %br
+  = f.text_field :fax
+%br
+%br  
+%label{ :for => 'school[kraj_kod]' }  Vyberte kraj:
+%br
+%select{:id => 'school[kraj_kod]', :name => 'school[kraj_kod]'}    
+  -@kraje.each do |kraj|
+    - if(@school.kraj_kod == kraj[0])
+      %option{:value => kraj[0], :selected => 'selected' }
+        = kraj[1]
+    - else
+      %option{:value => kraj[0] }
+        = kraj[1]
+%br
+%br
+%hr
+%br
+%h3 Přiřaďte obory:
+%table
+  - Section.all(:order => 'name ASC').in_groups_of(2, false) do |row_sections|
+    %tr
+      - for section in row_sections
+        %td
+          = check_box_tag "school[section_ids][]", section.id, @school.sections.include?(section), :id => "section#{section.id}"
+          %label{:for => "section#{section.id}"}
+            = section.name

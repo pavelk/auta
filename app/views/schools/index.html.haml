@@ -1,0 +1,14 @@
+- @page_title = "Seznam škol"
+.col1.main
+  %h2 Seznam škol
+  - @schools.each do |school|
+    .box.box-detail
+      %h3= link_to school.name, school
+      %p= truncate(school.anotation, :length => 320)
+      = link_to 'Otevři profil', school, :class => 'button-more'
+  .paging
+    = will_paginate @schools, :previous_label => 'Předchozí', :next_label => 'Další'
+.col2
+  = render :partial => 'shared/submenu_navigation'
+  = render :partial => 'shared/box_search'
+  = render :partial => 'shared/box_sections'

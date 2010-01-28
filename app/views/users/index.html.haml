@@ -1,0 +1,14 @@
+%h1 Listing users
+
+%table
+  %tr
+  - @users.each do |user|
+    %tr
+        
+      %td= link_to 'Show', object_url(user)
+      %td= link_to 'Edit', edit_object_url(user)
+      %td= link_to 'Destroy', object_url(user), :confirm => 'Are you sure?', :method => :delete
+
+%br/
+
+=link_to 'New user', new_object_url

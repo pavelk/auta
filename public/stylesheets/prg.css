@@ -1,0 +1,16 @@
+form #map{
+  width: 900px;
+  height: 400px;
+}
+
+.box-finish{
+  background: Blue !important;
+}
+
+.box-map{
+  border: 2px solid Red !important;
+}
+
+.highlight{
+  font-style: bold;
+}

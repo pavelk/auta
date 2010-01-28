@@ -1,0 +1,16 @@
+%h1
+  Editovat obor 
+  = "\"#{@object.name}\""
+
+-#= error_messages_for :section
+= link_to 'Ukázat na webu', section_path(object), :target => '_blank'
+|
+= link_to 'Zpět', collection_url
+
+- form_for(:section, :url => object_url, :html => { :method => :put }) do |f|
+  = render :partial => "form", :locals => { :f => f }
+  %p= submit_tag "Upravit"
+  
+= link_to 'Ukázat na webu', section_path(object), :target => '_blank'
+|
+= link_to 'Zpět', collection_url

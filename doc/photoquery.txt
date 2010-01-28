@@ -1,0 +1,14 @@
+UPDATE photos_server SET photo_file_name = photo_blog_file_name WHERE photo_file_name is null;
+UPDATE photos_server SET photo_content_type = photo_blog_content_type WHERE photo_content_type is null;
+UPDATE photos_server SET photo_file_size = photo_blog_file_size WHERE photo_file_size is null;
+UPDATE photos_server SET photo_updated_at = photo_blog_updated_at WHERE photo_updated_at is null;
+
+UPDATE photos_server SET photo_file_name = photo_hint_file_name WHERE photo_file_name is null;
+UPDATE photos_server SET photo_content_type = photo_hint_content_type WHERE photo_content_type is null;
+UPDATE photos_server SET photo_file_size = photo_hint_file_size WHERE photo_file_size is null;
+UPDATE photos_server SET photo_updated_at = photo_hint_updated_at WHERE photo_updated_at is null;
+
+UPDATE photos_server SET photo_file_name = photo_note_file_name WHERE photo_file_name is null;
+UPDATE photos_server SET photo_content_type = photo_note_content_type WHERE photo_content_type is null;
+UPDATE photos_server SET photo_file_size = photo_note_file_size WHERE photo_file_size is null;
+UPDATE photos_server SET photo_updated_at = photo_note_updated_at WHERE photo_updated_at is null;

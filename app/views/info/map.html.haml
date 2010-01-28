@@ -1,0 +1,67 @@
+- @page_title = "Interaktivní mapa"
+- use_home_map
+.col1
+  %h2 Interaktivní mapa
+  #hp-map.box.map
+    .filter
+      %h2.fl Filtrování:
+      %ul.fr
+        -#%li= link_to 'Pouze s maturitou', '#', :class => 'button-filter', :id => 'filter_exam_1'
+        %li= link_to_function 'Pouze s maturitou', "filterGraduation('true')"
+        %li= link_to 'Pouze bez maturity', '#', :class => 'button-filter', :id => 'filter_exam_0'
+        %li.fr= link_to 'nerozlišovat', '#', :class => 'button-filter last', :id => 'filter_exam_null'
+      .cols.cols3
+        .col1
+          %label{ :for => 'filter_display_schools' }zobrazit školy
+          %input{ :type => 'radio', :name => 'filter_display', :id => 'filter_display_schools', :value => 'schools', :onchange => 'clickType(this.value)', :checked => 'checked'  }
+        .col2.center
+          %label{ :for => 'filter_display_employers' }zobrazit zaměstnavatele
+          %input{ :type => 'radio', :name => 'filter_display', :id => 'filter_display_employers', :value => 'employers', :onchange => 'clickType(this.value)' }
+        .col3.right
+          %label{ :for => 'countrySelector' }Vyberte kraj
+          %select{ :id => 'countrySelector', :onchange => 'clickCountry(this.options[this.selectedIndex].value)', :class => 'button' }
+            %option{ :value => 'all', :selected => 'selected'  }-- Celá ČR --
+            %option{ :value => '13-praha' }Hlavní město Praha
+            %option{ :value => '1-stredocesky' }Středočeský kraj
+            %option{ :value => '14-plzensky' }Plzeňský kraj
+            %option{ :value => '2-karlovarsky' }Karlovarský kraj
+            %option{ :value => '3-ustecky' }Ústecký kraj
+            %option{ :value => '12-jihocesky' }Jihočeský kraj
+            %option{ :value => '4-liberecky' }Liberecký kraj
+            %option{ :value => '5-kralovehradecky' }Královehradecký kraj
+            %option{ :value => '6-pardubicky' }Pardubický kraj
+            %option{ :value => '7-jihomoravsky' }Jihomoravský kraj
+            %option{ :value => '8-olomoucky' }Olomoucký kraj
+            %option{ :value => '9-zlinsky' }Zlínský kraj
+            %option{ :value => '10-ostravsky' }Moravskoslezský kraj
+            %option{ :value => '11-vysocina' }Kraj Vysočina
+    #map
+    .slider
+      %h2 Vyberte si svůj obor&hellip;
+      #slider
+        = link_to 'Prev<span></span>', '', :class => 'overlaid prev'
+        .in
+          #slider_in
+            %ul#slider_in_ul
+              - Section.all.in_groups_of(5, false).each_with_index do |row_sections, i|
+                %li{ :class => "bg_#{i + 1}"  }
+                  - row_sections.each do |section|
+                    .item
+                      = link_to_function truncate(section.name, :length => 40, :omission => "&hellip;"), "filterSection('#{section.id}')"
+        = link_to 'Next<span></span>', '', :class => 'overlaid next'
+  .cols.cols50.sections
+    .col1
+      %h3= link_to "Obory s maturitou", graduations_sections_path
+      %ul.list
+        -Section.graduation(true).each do |grad|
+          %li= link_to grad.name, section_path(grad)
+    .col2
+      %h3= link_to "Obory bez maturity", no_graduations_sections_path
+      %ul.list
+        -Section.graduation(false).each do |nograd|
+          %li= link_to nograd.name, section_path(nograd)
+.col2
+  = render :partial => 'shared/submenu_navigation'
+  = render :partial => 'shared/box_search'
+  = render :partial => 'shared/box_open_doors'
+  = render :partial => 'shared/box_hints'

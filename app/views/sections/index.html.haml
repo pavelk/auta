@@ -1,0 +1,30 @@
+- @page_title = "Seznam oborů"
+.col1.main
+  %h2 
+    Seznam oborů 
+    = type_section(params[:action])
+  .filter
+    %form{ :action => '/sections/index', :method => 'get', :class => 'fl' }
+      %fieldset
+        %label{ :for => 'sectionSelector' }Vyberte obory
+        %select{ :id => 'sectionSelector', :onchange => 'clickSection(this.options[this.selectedIndex].value)', :class => 'button' }
+          %option{ :value => '', :selected => 'selected'  }-- vyberte obory --
+          %option{ :value => 'all' }všechny obory
+          %option{ :value => 'graduation' }s maturitou
+          %option{ :value => 'no_graduation' }bez maturity
+  - @sections.each do |section|
+    .box.box-detail
+      %h3= link_to section.name, section
+      %h4= graduation(section.graduation)
+      %p= truncate(section.description, :length => 320)
+      = link_to "Otevři profil", section, :class => 'button-more'
+  .paging
+    = will_paginate @sections, :previous_label => 'Předchozí', :next_label => 'Další'
+.col2
+  = render :partial => 'shared/submenu_navigation'
+  = render :partial => 'shared/box_search'
+  = render :partial => 'shared/box_sections'
+
+
+
+

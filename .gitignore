@@ -1,0 +1,11 @@
+.DS_Store
+db/sphinx
+doc/**/*
+doc/*.rtf
+log/*.log
+log/*.pid
+tmp/**/*
+config/database.yml
+config/deploy.rb
+config/*sphinx*
+public/assets

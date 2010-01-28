@@ -1,0 +1,22 @@
+%br
+%br
+%p  
+  = f.label :name, 'Název:'
+  %br
+  = f.text_area :name, :cols => "65", :rows => "1"  
+%p
+  = f.label :perex, 'Perex:'
+  %br 
+  = f.text_area :perex, :cols => "90", :rows => "5"
+%p
+  = f.label :content, 'Obsah:'
+  %br 
+  = f.text_area :content, :cols => "90", :rows => "8"
+%p
+  = f.label :hint_type, 'Autoodborník?'
+  %br 
+  = f.check_box :hint_type
+%p
+  = f.label :visible, 'Zveřejnit:'
+  %br 
+  = f.check_box :visible

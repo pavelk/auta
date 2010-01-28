@@ -1,0 +1,20 @@
+- @page_title = "Soutěž"
+.col1.main.quiz
+  %h2 Soutěžte a vyhrajte super ceny!
+  %p Chcete vyhrát jednu z řady skvělých cen? Zapojte se do soutěže a zašlete každý týden odpověď na naše otázky. Pro opravdové znalce a milovníky aut to bude hračka. Soutěž bude probíhat celý únor, proto nezapomeňte pravidelně navštěvovat tyto stránky, abyste nepromeškali žádné kolo soutěžních otázek. Vyhlášení soutěže proběhne do konce března. Pro účast v soutěži je nutná registrace.
+  %form.formBox
+    %fieldset
+    - @round.questions.each do |question|
+      .item
+        %h3.q= question.question
+        - question.answers.each do |answer|
+          .clearfix.a
+            .con
+              %input{ :type => 'radio', :id => "#{question.id}-#{answer.id}", :name => "#{question.id}", :value => "#{question.id}" }
+            .lab
+              %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
+    %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
+.col2
+  = render :partial => 'shared/box_search'
+  = render :partial => 'shared/box_sections'
+  

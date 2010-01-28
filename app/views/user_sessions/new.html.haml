@@ -1,0 +1,20 @@
+.form
+  - form_for @user_session, :url => user_session_path, :html => { :class => 'formBox' } do |f|
+    = f.error_messages
+    %br
+    %br
+    = flash[:error]
+    %fieldset
+      %h2 Přihlásit se
+      .clearfix
+        = f.label :email, 'E-mail:'
+        = f.text_field :email, :class => 'button'
+      .clearfix
+        = f.label :password, 'Heslo:'
+        = f.password_field :password, :class => 'button'
+      .clearfix
+        = link_to "Registrace", new_user_path
+        .con.radio
+          = f.check_box :remember_me
+          = f.label :remember_me, 'Zapamatovat na tomto počítači'
+      = f.submit "Přihlásit se", :class => 'submit'

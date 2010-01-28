@@ -1,0 +1,9 @@
+%h1 Nová tisková zpráva
+
+-#= error_messages_for :note
+
+- form_for(:note, :url => collection_url) do |f|
+  = render :partial => "form", :locals => { :f => f }
+  %p= submit_tag "Uložit"
+
+= link_to 'Zpět', collection_url

@@ -1,0 +1,20 @@
+- @page_title = "Aktuality"
+.col1.main
+  %h2 Aktuality
+  - @collection.each do |blog|
+    .box.box-detail.item
+      %h3= link_to blog.name, blog
+      - if blog.photos.size > 0
+        .img
+          = image_tag blog.photos[0].photo.url(:small_show) rescue nil
+      .self
+        %p= blog.perex
+      = link_to 'čtěte více', blog, :class => 'button-more'
+  .paging
+    = will_paginate @collection, :previous_label => 'Předchozí', :next_label => 'Další'    
+.col2
+  = render :partial => 'shared/box_search'
+  = render :partial => 'shared/box_sections'
+  = render :partial => 'shared/box_open_doors'
+
+

@@ -1,0 +1,16 @@
+%h1
+  Editovat školu 
+  = "\"#{@object.name}\"" 
+
+-#= error_messages_for :school
+= link_to 'Ukázat na webu', school_path(object), :target => '_blank'
+|
+= link_to 'Zpět', collection_url
+
+- form_for(:school, :url => object_url, :html => { :method => :put }) do |f|
+  = render :partial => "form", :locals => { :f => f }
+  %p= submit_tag "Upravit"
+  
+= link_to 'Ukázat na webu', school_path(object), :target => '_blank'
+|
+= link_to 'Zpět', collection_url

@@ -1,0 +1,8 @@
+- hint = Hint.box_hint
+.box
+  .h
+    %h3 Odborníci radí
+  .in
+    = image_tag hint[0].photos[0].photo.url(:small_show), :class => 'img fl' rescue nil
+    %p= truncate(hint[0].perex, :length => 160, :omission => "&hellip;")
+    = link_to 'čtěte více', hint_path(hint[0]), :class => 'button-more'

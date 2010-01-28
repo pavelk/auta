@@ -1,0 +1,13 @@
+- @page_title = "Seznam zaměstnavatelů"
+.col1.main
+  %h2 Seznam zaměstnavatelů
+  - @employers.each do |employer|
+    .box.box-detail
+      %h3= link_to employer.name, employer
+      %p= truncate(replace_anotation(employer.anotation), :length => 175)
+      = link_to "Otevři profil", employer, :class => 'button-more'
+  .paging
+    = will_paginate @employers, :previous_label => 'Předchozí', :next_label => 'Další'
+.col2
+  = render :partial => 'shared/submenu_navigation'
+  = render :partial => 'shared/box_search'

@@ -1,0 +1,34 @@
+- @page_title = @object.name + " | Seznam zaměstnavatelů"
+.col1.main
+  %h2= @object.name
+  %p.address
+    %strong Adresa:
+    = @object.name
+    ,
+    = @object.street1
+    ,
+    = @object.town
+    ,
+    = @object.zip_code
+    %br
+    %strong IČO:
+    = @object.ico
+    %br
+    %strong DIČ:
+    = @object.dic
+    %br
+    %strong Web:
+    = link_to @object.www1, 'http://'+ @object.www1  rescue nil
+    %br
+    %strong Email:
+    = mail_to @object.email1, @object.email1  rescue nil
+  .box.box-detail
+    %p= @object.anotation
+  .gallery
+    %h3 Fotografie
+    - @object.photos.each do |row|
+      .img
+        = image_tag row.photo.url(:small)
+.col2
+  = render :partial => 'shared/submenu_navigation'
+  = render :partial => 'shared/box_search'

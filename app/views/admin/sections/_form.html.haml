@@ -1,0 +1,23 @@
+%br
+%br
+%p  
+  = f.label :name, 'Název:'
+  %br
+  = f.text_area :name, :cols => "90", :rows => "1"  
+%p
+  = f.label :description, 'Popis:'
+  %br 
+  = f.text_area :description, :cols => "90", :rows => "8"
+%p
+  = f.label :course, 'Předměty důležité pro obor:'
+  %br 
+  = f.text_area :course, :cols => "90", :rows => "2"
+%p
+  = f.label :exercise, 'Uplatnění:'
+  %br 
+  = f.text_area :exercise, :cols => "90", :rows => "5"   
+%p
+  = f.label :graduation, 'Maturita:'
+  %br 
+  = f.check_box :graduation
+%input{ :type => 'hidden', :name => 'page', :value => "#{params[:page]}" }  

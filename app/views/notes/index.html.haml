@@ -1,0 +1,16 @@
+- @page_title = 'Tiskové zprávy'
+.col1.main
+  %h2 Tiskové zprávy
+  - @notes.each do |note|
+    .box.box-detail.item
+      %h3= link_to note.name, note
+      .img= image_tag note.photos[0].photo.url(:small_show) rescue nil
+      .self
+        %p= note.perex
+        = link_to 'čtěte více', note, :class => 'button-more'
+  .paging
+    = will_paginate @notes, :previous_label => 'Předchozí', :next_label => 'Další'
+.col2
+  = render :partial => 'shared/box_search'
+  = render :partial => 'shared/box_open_doors'
+  = render :partial => 'shared/box_news', :locals => { :num => 2  }

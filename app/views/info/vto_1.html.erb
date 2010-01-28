@@ -1,0 +1,65 @@
+<% @page_title = "Výhody technických oborů | Bude vás to bavit" %>
+<div class="col1 advantages relative">
+  <h2>Výhody technických oborů</h2>
+  <p class="message">Prakticky zaměřené studium vás bude bavit.</p>
+  
+  <h3>1. Atraktivní studium si najdete přímo ve svém regionu!</h3>
+  <p class="offsetBottom">Svůj obor i budoucího zaměstnavatele si můžete <%= link_to 'vybrat přímo ve svém regionu.', map_path %></p>
+
+  <h4>Technické školy úzce spolupracují s průmyslovými podniky:</h4>
+  <ul class="advantages">
+    <li>Jako absolvent střední odborné školy či učiliště budete schopen obstát  v moderním provozu svého oboru.</li>
+    <li>Zaměstnavatelé v automobilovém průmyslu vám zajistí nabízejí praxe, odborné stáže, stipendia a další výhody. Seznámíte se tak s používáním nejnovějších technologií v praxi.</li>
+  </ul>
+  
+  <h4>Technika vás chytne! </h4>
+  <ul class="advantages">
+    <li>Podle průzkumu jsou absolventi technických oborů nadprůměrně spokojeni s oborem, který studovali (viz tabulka – míra identifikace vyjadřuje procento absolventů, kteří by znovu zvolili stejný studijní obor).</li>
+  </ul>
+  
+  <table>
+    <tr>
+      <th>SOU </th>
+      <th class="small center">Míra <br />identifikace</th>
+      <th>SOS</th>
+      <th class="small center">Míra <br />identifikace</th>
+      <th>VOS</th>
+      <th class="small center">Míra <br />identifikace</th>
+    </tr>
+    <tr>
+      <td>Mechanik- opravář</td>
+      <td class="center">77 %</td>
+      <td>Elektrotechnika</td>
+      <td class="center">62 %</td>
+      <td>Strojírenství</td>
+      <td class="center">83 %</td>
+    </tr>
+    <tr>
+      <td>Automechanik</td>
+      <td class="center">81 %</td>
+      <td>Strojírenství</td>
+      <td class="center">64 %</td>
+      <td>Elektrotechnika</td>
+      <td class="center">84 %</td>
+    </tr>
+    <tr>
+      <td>Průměr všech oborů</td>
+      <td class="center">64 %</td>
+      <td>Průměr všech oborů</td>
+      <td class="center">64 %</td>
+      <td>Průměr všech oborů</td>
+      <td class="center">81 %</td>
+    </tr>
+  </table>
+  <p class="small">*Údaje o spokojenosti absolventů s dalšími obory najdete na <a href="http://www.infoabsolvent.cz">www.infoabsolvent.cz</a></p>
+</div> <!-- /.col1 -->
+
+<div class="col2">
+
+  <div class="boxSubmenu">
+    <%= render :partial => "shared/vto_navigation" %>
+  </div>
+<%= render :partial => 'shared/box_search' %>
+<%= render :partial => 'shared/box_open_doors' %>  
+
+</div>

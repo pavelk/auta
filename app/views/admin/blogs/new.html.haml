@@ -1,0 +1,9 @@
+%h1 Nová aktualita
+
+-#= error_messages_for :blog
+
+- form_for(:blog, :url => collection_url) do |f|
+  = render :partial => "form", :locals => { :f => f }
+  %p= submit_tag "Uložit"
+
+= link_to 'Zpět', collection_url

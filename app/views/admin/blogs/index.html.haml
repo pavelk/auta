@@ -1,0 +1,19 @@
+%h1 Aktuality
+%h4
+  Celkem
+  = @collection.total_entries
+  záznamů
+%table
+  %tr
+  - @collection.each do |object|
+    %tr{:class => cycle('odd', 'even') }        
+      %td= link_to object.name, edit_object_url(object)
+      %td= link_to 'Odstranit', object_url(object), :confirm => 'Jste si jistí?', :method => :delete
+  %tr
+    %td{ :colspan => '2' } &nbsp;
+  %tr
+    %td{ :colspan => '2' }
+      = will_paginate @collection, :previous_label => 'Předchozí', :next_label => 'Další'
+%br/
+
+=link_to 'Nová aktualita', new_object_url

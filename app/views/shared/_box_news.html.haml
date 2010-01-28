@@ -1,0 +1,13 @@
+.box
+  .h
+    %h3 Aktuality
+  .in.news
+    - Blog.box_hints(num).each do |entry|
+      .item.last
+        = image_tag entry[0].photos[0].photo.url(:small_show), :class => 'img fl' rescue nil
+        %strong{ :class => 'date'  }= formatted_date(entry.created_at)
+        %br
+        %strong= entry.name
+        %p= truncate(entry.perex, :length => 100, :omission => '&hellip;')
+        = link_to 'čtěte více', blog_path(entry), :class => 'button-more'
+        %br

@@ -1,0 +1,73 @@
+- use_home_map
+.col1
+  #hp-map.box.map
+    .filter
+      %h2.fl Filtrování:
+      %ul.fr
+        -#%li= link_to 'Pouze s maturitou', '#', :class => 'button-filter', :id => 'filter_exam_1'
+        %li= link_to_function 'Pouze s maturitou', "filterGraduation('true')"
+        %li= link_to 'Pouze bez maturity', '#', :class => 'button-filter', :id => 'filter_exam_0'
+        %li.fr= link_to 'nerozlišovat', '#', :class => 'button-filter last', :id => 'filter_exam_null'
+      .cols.cols3
+        .col1
+          %label{ :for => 'filter_display_schools' }zobrazit školy
+          %input{ :type => 'radio', :name => 'filter_display', :id => 'filter_display_schools', :value => 'schools', :onchange => 'clickType(this.value)', :checked => 'checked'  }
+        .col2.center
+          %label{ :for => 'filter_display_employers' }zobrazit zaměstnavatele
+          %input{ :type => 'radio', :name => 'filter_display', :id => 'filter_display_employers', :value => 'employers', :onchange => 'clickType(this.value)' }
+        .col3.right
+          %label{ :for => 'countrySelector' }Vyberte kraj
+          %select{ :id => 'countrySelector', :onchange => 'clickCountry(this.options[this.selectedIndex].value)', :class => 'button' }
+            %option{ :value => 'all', :selected => 'selected'  }-- Celá ČR --
+            %option{ :value => '13-praha' }Hlavní město Praha
+            %option{ :value => '1-stredocesky' }Středočeský kraj
+            %option{ :value => '14-plzensky' }Plzeňský kraj
+            %option{ :value => '2-karlovarsky' }Karlovarský kraj
+            %option{ :value => '3-ustecky' }Ústecký kraj
+            %option{ :value => '12-jihocesky' }Jihočeský kraj
+            %option{ :value => '4-liberecky' }Liberecký kraj
+            %option{ :value => '5-kralovehradecky' }Královehradecký kraj
+            %option{ :value => '6-pardubicky' }Pardubický kraj
+            %option{ :value => '7-jihomoravsky' }Jihomoravský kraj
+            %option{ :value => '8-olomoucky' }Olomoucký kraj
+            %option{ :value => '9-zlinsky' }Zlínský kraj
+            %option{ :value => '10-ostravsky' }Moravskoslezský kraj
+            %option{ :value => '11-vysocina' }Kraj Vysočina
+    #map
+    .slider
+      %h2 Vyberte si svůj obor&hellip;
+      #slider
+        = link_to 'Prev<span></span>', '', :class => 'overlaid prev'
+        .in
+          #slider_in
+            %ul#slider_in_ul
+              - Section.all.in_groups_of(5, false).each_with_index do |row_sections, i|
+                %li{ :class => "bg_#{i + 1}"  }
+                  - row_sections.each do |section|
+                    .item
+                      = link_to_function truncate(section.name, :length => 40, :omission => "&hellip;"), "filterSection('#{section.id}')"
+        = link_to 'Next<span></span>', '', :class => 'overlaid next'
+    .box.boxArticles.cols.cols50
+      %h2 Proč technický obor
+      .col1.item
+        %h4.small Technický obor – jistá budoucnost,
+        = image_tag 'img/article-left.jpg'
+        %ul.list
+          %li= link_to 'Prakticky zaměřené studium vás bude bavit.', vto_1_path
+          %li= link_to 'Jako absolvent snadno najdete uplatnění.', vto_2_path
+          %li= link_to 'Vyděláte si dobré peníze.', vto_3_path
+          %li= link_to 'O vaši profesi bude na trhu práce dlouhodobý zájem.', vto_4_path
+        %p Nečekejte žádnou ubíjející rutinu v kanceláři. Vás čeká tvůrčí profese, která vám přinese uspokojení i uznání. Získáte jistotu dobrého zaměstnání a prostor učit se i objevovat nové věci. Už se sami sebe nikdy nezeptáte „Co teď budu dělat?“. Spíš budete přemýšlet, do čeho se chcete pustit dřív.
+      .col2.item 
+        %h4 Ministryně školství, PhDr. Miroslava Kopicová
+        = image_tag 'img/article-right.jpg', :class => 'img fl'
+        %p &bdquo;Rozšiřování spolupráce škol a zaměstnavatelů je jednou z klíčových podmínek rozvoje středního odborného vzdělávání v České republice. To se nachází v nelehké situaci a přitom existuje v této oblasti spousta nevyužitého potenciálu. Cestu naznačuje např. Akční plán podpory odborného vzdělávání, který vznikl na MŠMT. Spolupráce mezi školami a zaměstnavateli musí být výhodná oboustranně. Škola by měla např. otevřít cestu k práci s moderním vybavením, k němuž by se její žáci za normálních okolností jen obtížně dostávali. Zaměstnavatel by pak mj. získal kontakt na potenciální budoucí zaměstnance, u nichž by měl navíc velice přesnou představu o jejich schopnostech a obeznámenosti s výrobními postupy. Kromě toho by se mohl a měl podílet i na tvorbě vzdělávacího obsahu. Každopádně ale platí, že škola nesmí být v žádném případě nahlížena jen jako zdroj levné pracovní síly. Musí jít o rovnocenné partnerství.&ldquo;
+        = link_to 'čtěte více', 'http://www.autanasbavi.cz/aktualita/10-ministryne-skolstvi-phdr-miroslava-kopicova', :class => 'button-more'
+.col2
+  .boxSubmenu
+    %ul
+      %li= tab_for('Soutěž', competition_path)
+  = render :partial => 'shared/box_search'
+  = render :partial => 'shared/box_open_doors'
+  = render :partial => 'shared/box_hints'
+  = render :partial => 'shared/box_news', :locals => { :num => 2  }
