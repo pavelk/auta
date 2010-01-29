@@ -1,13 +1,14 @@
 class AccountActivationsController < ApplicationController
   
-  skip_before_filter :check_authentication
-  before_filter :load_user_using_perishable_token, :only => [:show]
+  before_filter :check_authentication, :except => [:show]
+  #before_filter :load_user_using_perishable_token, :only => [:show]
   
   def edit
     render
   end
   
   def show
+    @user = User.find_using_perishable_token(params[:id], 2.hours)
     @user.active = true
     if @user.save
       flash[:notice] = "Account activated"
