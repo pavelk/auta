@@ -26,8 +26,6 @@ Rails::Initializer.run do |config|
    config.action_mailer.default_charset = "utf-8"
 
 end
- 
- 
 
  ActionMailer::Base.delivery_method = :smtp
 
