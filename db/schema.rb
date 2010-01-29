@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091023115109) do
+ActiveRecord::Schema.define(:version => 20100129091238) do
 
   create_table "answers", :force => true do |t|
     t.integer "question_id"
@@ -171,15 +171,15 @@ ActiveRecord::Schema.define(:version => 20091023115109) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "user_name",           :default => "", :null => false
-    t.string   "email",                               :null => false
-    t.string   "crypted_password",                    :null => false
-    t.string   "password_salt",                       :null => false
-    t.string   "persistence_token",                   :null => false
-    t.string   "single_access_token", :default => "", :null => false
-    t.string   "perishable_token",    :default => "", :null => false
-    t.integer  "login_count",         :default => 0,  :null => false
-    t.integer  "failed_login_count",  :default => 0,  :null => false
+    t.string   "user_name",           :default => "",    :null => false
+    t.string   "email",                                  :null => false
+    t.string   "crypted_password",                       :null => false
+    t.string   "password_salt",                          :null => false
+    t.string   "persistence_token",                      :null => false
+    t.string   "single_access_token", :default => "",    :null => false
+    t.string   "perishable_token",    :default => "",    :null => false
+    t.integer  "login_count",         :default => 0,     :null => false
+    t.integer  "failed_login_count",  :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "last_login_at"
     t.datetime "current_login_at"
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20091023115109) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",              :default => false, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
