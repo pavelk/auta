@@ -8,16 +8,20 @@ class AccountActivationsController < ApplicationController
   end
   
   def show
-    @user = User.find_using_perishable_token(params[:id], 2.hours)
-    @user.active = true
-    if @user.save
+    debugger
+    @user = User.find_using_perishable_token(params[:id], 0)
+    @user.activate!
+    UserSession.create(@user)
+    #@user.active = true
+    #@user.save!
+    #if @user.save
       flash[:notice] = "Account activated"
       #prihlasit uzivatele
-      UserSession.create(@user)
+      #UserSession.create(@user)
       redirect_to root_url
-    else
-      render :action => :edit
-    end
+    #else
+    #  render :action => :edit
+    #end
   end
   
   private

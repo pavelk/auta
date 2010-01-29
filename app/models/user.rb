@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   def activate_account!
     reset_perishable_token!
     Notifier.deliver_activate_account(self)
+  end
+  
+  def activate!
+      self.active = true
+      save
   end 
   
 end
