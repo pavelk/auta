@@ -23,13 +23,14 @@ Rails::Initializer.run do |config|
   config.action_controller.session_store = :active_record_store
 
 end
+ 
+ config.action_mailer.raise_delivery_errors = true
+ config.action_mailer.default_charset = "utf-8"
 
-ActionMailer::Base.smtp_settings = {
-   :tls => true,
-   :address => "smtp.gmail.com",
-   :port => "587",
-   :domain => "YOURDOMAIN",
-   :authentication => :plain,
-   :user_name => "pavel.krusek",
-   :password => "s4557410"
- }
+ ActionMailer::Base.delivery_method = :smtp
+
+ ActionMailer::Base.smtp_settings = {
+   :address  => "smtp-out.xnet.cz",
+   :port => 25,
+   :domain => "4dtechlab.com" 
+ } 

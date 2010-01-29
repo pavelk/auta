@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sections
   map.resources :open_doors
   map.resources :schools
-  map.resources :users
+  #map.resources :users
   
   map.with_options :controller => 'info' do |info|
     info.vto_1 'bude-vas-to-bavit', :action => 'vto_1'
@@ -46,6 +46,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resource  :user_session,
                 :as => 'prihlaseni',
                 :path_names => { :new => 'nove' }
+                
+  map.resources :users, 
+                :as => 'uzivatele', 
+                :path_names => { :new => 'novy-uzivatel', :reg_notice => 'vyzva-k-aktivaci' }, 
+                              :member => { :reg_notice => :get }
+  map.resources :account_activations,
+                :as => 'aktivace-uctu',
+                :path_names => { :edit => 'upozorneni' }              
   
   #map.round '/soutez', :controller => 'rounds', :action
                 
