@@ -1,7 +1,16 @@
 - @page_title = "Soutěž"
 .col1.main.quiz
   %h2 Soutěžte a vyhrajte super ceny!
-  %p Chcete vyhrát jednu z řady skvělých cen? Zapojte se do soutěže a zašlete každý týden odpověď na naše otázky. Pro opravdové znalce a milovníky aut to bude hračka. Soutěž bude probíhat celý únor, proto nezapomeňte pravidelně navštěvovat tyto stránky, abyste nepromeškali žádné kolo soutěžních otázek. Vyhlášení soutěže proběhne do konce března. Pro účast v soutěži je nutná registrace.
+  %p Chcete vyhrát jednu z řady skvělých cen? Zapojte se do soutěže a zašlete každý týden odpověď na naše otázky. Pro opravdové znalce a milovníky aut to bude hračka. Soutěž bude probíhat celý únor, proto nezapomeňte pravidelně navštěvovat každý týden tyto stránky, abyste nepromeškali žádné kolo soutěžních otázek. Vyhlášení soutěže proběhne do konce března. Pro účast v soutěži je nutná registrace. 
+
+  %p Každý týden od pondělka 1.2. po dobu měsíce únor budou připraveny nové otázky. Abyste se mohli zúčastnit soutěže, je nutné zodpovědět všechny otázky. Rozhodující pro výhru bude čas došlých odpovědí a jejich správnost, viz pravidla.</p>
+
+  %p.alt.big="#{@round.id}.kolo otázek běží od 25.1. do 31.1." 
+
+  .gallery
+    .item= image_tag "/images/soutez-1.jpg"
+    .item= image_tag "/images/soutez-2.jpg"
+    .item= image_tag "/images/soutez-3.jpg"
   %form.formBox
     %fieldset
     - @round.questions.each do |question|
@@ -17,4 +26,3 @@
 .col2
   = render :partial => 'shared/box_search'
   = render :partial => 'shared/box_sections'
-  

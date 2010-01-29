@@ -1,0 +1,15 @@
+cz:
+  authlogic:
+    error_messages:
+      login_blank: musí být vyplněno
+      login_not_found: e-mail neexistuje
+      login_invalid: můžou být jen písmena, čísla, mezery a .-_@
+      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+      email_invalid: není e-mail.
+      password_blank: musí být vyplněno
+      password_invalid: není správně
+      not_active: Váš účet není aktivní
+      not_confirmed: Your account is not confirmed
+      not_approved: Your account is not approved
+      blank_record: You can not login with a blank record
+      new_record: You can not login with a new record

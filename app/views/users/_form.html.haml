@@ -1,12 +1,20 @@
 .clearfix
-  = f.label :user_name, 'Jméno:'
-  = f.text_field :user_name, :class => 'inp'
-  %br
-= f.label :email, '*E-mail:'
-= f.text_field :email, :class => 'inp'
-%br
-= f.label :password, '*Heslo (minimálně 5 znaků):'
-= f.password_field :password, :class => 'inp'
-%br  
-= f.label :password_confirmation, '*Heslo znova:'
-= f.password_field :password_confirmation, :class => 'inp'
+  .lab
+    = f.label :user_name, 'Jméno:'
+  .con  
+    = f.text_field :user_name, :class => 'inp'
+.clearfix
+  .lab
+    = f.label :email, '*E-mail:'
+  .con
+    = f.text_field :email, :class => 'inp'
+.clearfix
+  .lab
+    = f.label :password, '*Heslo (minimálně 5 znaků):'
+  .con  
+    = f.password_field :password, :class => 'inp'
+.clearfix
+  .lab
+    = f.label :password_confirmation, '*Heslo znova:'
+  .con  
+    = f.password_field :password_confirmation, :class => 'inp'

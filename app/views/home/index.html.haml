@@ -66,7 +66,8 @@
 .col2
   .boxSubmenu
     %ul
-      %li= tab_for('Soutěž', competition_path)
+      %li.competition= tab_for('Pravidla soutěže', rules_path)
+      %li.competition= tab_for('Soutěž', competition_path)
   = render :partial => 'shared/box_search'
   = render :partial => 'shared/box_open_doors'
   = render :partial => 'shared/box_hints'

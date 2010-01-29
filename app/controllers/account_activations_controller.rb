@@ -8,7 +8,7 @@ class AccountActivationsController < ApplicationController
   end
   
   def show
-    debugger
+    #debugger
     @user = User.find_using_perishable_token(params[:id], 0)
     @user.activate!
     UserSession.create(@user)

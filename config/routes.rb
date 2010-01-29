@@ -19,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
     info.accesibility 'prohlaseni-o-pristupnosti', :action => 'accesibility'
     info.contact 'kontakt', :action => 'contact'
     info.download 'ke-stazeni', :action => 'download'
-    info.competition 'soutez', :action => 'competition'        
+    info.competition 'soutez', :action => 'competition'
+    info.rules 'pravidla-souteze', :action => 'rules'      
   end
   
   map.resources :hints, :collection => { :specialists => :get, :no_specialists => :get}

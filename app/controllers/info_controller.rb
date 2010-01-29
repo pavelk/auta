@@ -3,6 +3,10 @@ class InfoController < FrontendController
   #before_filter :check_authentication, :except => [:competition,:vto_1, :vto_2, :vto_3, :vto_4, :about, :map, :faq, :accesibility, :contact, :download]
   before_filter :check_authentication, :except => [:vto_1, :vto_2, :vto_3, :vto_4, :about, :map, :faq, :accesibility, :contact, :download]
   
+  def rules
+    add_crumb "Pravidla soutěže"
+  end  
+  
   def competition
     add_crumb "Soutěž"
     #debugger

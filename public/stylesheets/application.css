@@ -207,7 +207,8 @@ a.overlaid,
   #content .boxSubmenu li a         { display: block; width: 228px; height: 26px; padding: 9px 0 0 10px; text-align: center; color: #fff; text-decoration: none; background: url('../images/bg-submenu.gif') no-repeat; }
   #content .boxSubmenu li a:hover   { background-position: 0 -35px; color: #fff !important; text-decoration: none !important; }
   #content .boxSubmenu li span      { display: block; width: 228px; height: 26px; padding: 9px 0 0 10px; text-align: center; color: #fff; text-decoration: none; background: url('../images/bg-submenu.gif') 0 -35px no-repeat; }
-  /* /Sidebar boxes */
+  #content .boxSubmenu li.competition a { background-position: 0 -35px; }
+	/* /Sidebar boxes */
 
 
   /* -- Content images -- */
@@ -282,7 +283,11 @@ a.overlaid,
   #content .main h5,
   #content .main h6     { margin: 0 15px .3em; }
   #content .main ul     { padding-left: 1em; }
+  #content .main ol     { padding-left: 1.5em; }
   #content .main ul li  { padding-left: 30px; margin-bottom: 5px; background: url('../images/bg-ul-list.gif') 0 .3em no-repeat; }
+  #content .main ol li  { list-style: decimal; margin-bottom: 4px; }
+  #content .main ul li ol li { list-style: decimal; margin-bottom: 4px; }
+  #content .main ol li ul li { list-style: none; padding-left: 30px; margin-bottom: 5px; background: url('../images/bg-ul-list.gif') 0 .3em no-repeat; }
   #content .main .img   { margin: 3px 15px; }
 
   .boxArticles .item    { text-align: justify; }
@@ -391,6 +396,14 @@ a.overlaid,
     #content .quiz form .lab { margin-left: 4%; width: auto; float: none; text-align: left; }
     #content .quiz form .con { width: 4%; float: left; }
     #content .quiz form .submit { width: 80px !important; margin-top: 10px; background: url('../images/bg-submit-blue2.gif') no-repeat; }
+    #content .quiz .alt { color: #0050be; }
+    
+    
+    #content .gallery { overflow: hidden; height: 100%; margin: 10px 0 0 !important; }
+    #content .gallery .item { width: 150px; height: 150px; float: left; margin: 0 40px 10px 0 !important; }
+    
+    
+    #content .boxBanner { border: none !important; background: none !important; }
 
 
     /* Interactive map sections */
