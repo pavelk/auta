@@ -14,6 +14,8 @@ class InfoController < FrontendController
   end
   
   def competition_submit
+    add_crumb "Děkujeme za odpověď"
+    #debugger
     
   end  
   

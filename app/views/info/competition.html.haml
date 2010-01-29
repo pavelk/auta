@@ -11,7 +11,7 @@
     .item= image_tag "/images/soutez-1.jpg"
     .item= image_tag "/images/soutez-2.jpg"
     .item= image_tag "/images/soutez-3.jpg"
-  %form.formBox
+  %form.formBox{ :action => '/soutez_odpoved', :method => 'post'  }
     %fieldset
     - @round.questions.each do |question|
       .item
@@ -22,6 +22,7 @@
               %input{ :type => 'radio', :id => "#{question.id}-#{answer.id}", :name => "#{question.id}", :value => "#{question.id}" }
             .lab
               %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
+    %input{ :type => 'hidden', :id => "round_id", :name => "round_id", :value => "#{@round.id}" }
     %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
 .col2
   = render :partial => 'shared/box_search'

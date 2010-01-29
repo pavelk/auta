@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sections
   map.resources :open_doors
   map.resources :schools
+  #map.resources :info, :member => { :competition_submit => :post }  
   #map.resources :users
   
   map.with_options :controller => 'info' do |info|
@@ -20,7 +21,8 @@ ActionController::Routing::Routes.draw do |map|
     info.contact 'kontakt', :action => 'contact'
     info.download 'ke-stazeni', :action => 'download'
     info.competition 'soutez', :action => 'competition'
-    info.rules 'pravidla-souteze', :action => 'rules'      
+    info.rules 'pravidla-souteze', :action => 'rules'
+    info.sbmt 'soutez_odpoved', :action => 'competition_submit'
   end
   
   map.resources :hints, :collection => { :specialists => :get, :no_specialists => :get}
