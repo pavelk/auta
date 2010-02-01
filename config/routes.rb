@@ -25,6 +25,38 @@ ActionController::Routing::Routes.draw do |map|
     info.sbmt 'soutez_odpoved', :action => 'competition_submit'
   end
   
+  ###########
+  map.resources :blogs
+  map.with_options :controller => "blogs" do |blog|
+    blog.blogs "/aktuality/:page", :action => "index", :page => nil
+    blog.blog "/aktualita/:id/:page", :action => "show", :page => nil
+  end
+  
+  map.resources :notes
+  map.with_options :controller => "notes" do |note|
+    note.notes "/tiskove-zpravy/:page", :action => "index", :page => nil
+    note.note "/tiskova-zprava/:id/:page", :action => "show", :page => nil
+  end
+  
+  map.resources :open_doors
+  map.with_options :controller => "open_doors" do |odd|
+    odd.open_door_days "/dny-otevrenych-dveri/:page", :action => "index", :page => nil
+    odd.open_door_day "/den-otevrenych-dveri/:id", :action => "show"
+  end
+  
+  map.resources :employers
+  map.with_options :controller => "employers" do |employer|
+    employer.employers "/zamestnavatele/:page", :action => "index", :page => nil
+    employer.employer "/zamestnavatel/:id/:page", :action => "show", :page => nil
+  end
+  
+  map.resources :schools
+  map.with_options :controller => "schools" do |school| 
+    school.schools "/skoly/:page", :action => "index", :page => nil
+    school.school "/skola/:id/:page", :action => "show", :page => nil
+  end
+  #########
+  
   map.resources :hints, :collection => { :specialists => :get, :no_specialists => :get}
   map.with_options :controller => "hints" do |hint|
     hint.specialists_hints "/rady-odborniku/autoprofesionalove/:page", :action => "specialists", :page => nil
