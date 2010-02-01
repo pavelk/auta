@@ -20,18 +20,18 @@ module ApplicationHelper
   
   def use_home_map
     content_for :home_map do
-      '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;hl=cs&amp;key=ABQIAAAACxwsDjo-rcrBV96450KzxxS29vlNIrrAGroOBdtzFAz1u0Eg_BQb5di4rO3sg64dZVR0FocXcYX2mA"
+      '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;hl=cs&amp;key=ABQIAAAACxwsDjo-rcrBV96450KzxxQEYC1b6QprzpHrgFB6FkE_Fj0qIhQcNfko6HX4YOhk4oHTf19CnztM-Q"
           type="text/javascript"></script>
-        <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAACxwsDjo-rcrBV96450KzxxS29vlNIrrAGroOBdtzFAz1u0Eg_BQb5di4rO3sg64dZVR0FocXcYX2mA&hl=cs" type="text/javascript"></script>
+        <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAACxwsDjo-rcrBV96450KzxxQEYC1b6QprzpHrgFB6FkE_Fj0qIhQcNfko6HX4YOhk4oHTf19CnztM-Q&hl=cs" type="text/javascript"></script>
         <script src="/javascripts/home.js" type="text/javascript"></script>'        
     end
   end
-  
+
   def use_maps
     content_for :maps do
-      '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;hl=cs&amp;key=ABQIAAAACxwsDjo-rcrBV96450KzxxS29vlNIrrAGroOBdtzFAz1u0Eg_BQb5di4rO3sg64dZVR0FocXcYX2mA"
+      '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;hl=cs&amp;key=ABQIAAAACxwsDjo-rcrBV96450KzxxQEYC1b6QprzpHrgFB6FkE_Fj0qIhQcNfko6HX4YOhk4oHTf19CnztM-Q"
           type="text/javascript"></script>
-        <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAACxwsDjo-rcrBV96450KzxxS29vlNIrrAGroOBdtzFAz1u0Eg_BQb5di4rO3sg64dZVR0FocXcYX2mA&hl=cs" type="text/javascript"></script>              
+        <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=ABQIAAAACxwsDjo-rcrBV96450KzxxQEYC1b6QprzpHrgFB6FkE_Fj0qIhQcNfko6HX4YOhk4oHTf19CnztM-Q&hl=cs" type="text/javascript"></script>              
         <script src="http://www.google.com/uds/solutions/localsearch/gmlocalsearch.js" type="text/javascript"></script>
         <script src="/javascripts/maps.js" type="text/javascript"></script>        
         <style type="text/css">
