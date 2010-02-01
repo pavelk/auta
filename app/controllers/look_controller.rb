@@ -2,6 +2,8 @@ class LookController < ApplicationController
   
   add_crumb ('Výsledky')
   
+  before_filter :check_authentication, :except => [:index]
+  
   def index
     if(params[:type_search] == "all")
       @results = ThinkingSphinx::Search.search params[:search]
