@@ -60,9 +60,15 @@
       %p Nečekejte žádnou ubíjející rutinu v kanceláři. Vás čeká tvůrčí profese, která vám přinese uspokojení i uznání. Získáte jistotu dobrého zaměstnání a prostor učit se i objevovat nové věci. Už se sami sebe nikdy nezeptáte „Co teď budu dělat?“. Spíš budete přemýšlet, do čeho se chcete pustit dřív.
     .col2
       .item
-        .boxSubmenu
-          %ul
-            %li.competition= tab_for('Pravidla soutěže', rules_path)
+        -#.boxSubmenu
+          -#%ul
+            -#%li.competition= tab_for('Soutěž', competition_path)
+        .box.boxBanner
+          #bannerFlash3.in
+            :javascript
+              var so = new SWFObject("/images/button.swf", "banner", 322, 41, "9", "#FFFFFF");
+              so.addParam("wmode", "transparent");
+              so.write("bannerFlash3");            
         .box.boxBanner
           #bannerFlash2.in
             :javascript
@@ -73,7 +79,7 @@
         %h4 Ministryně školství, PhDr. Miroslava Kopicová
         = image_tag 'article-right.jpg', :class => 'img fl'
         %p &bdquo;Rozšiřování spolupráce škol a zaměstnavatelů je jednou z klíčových podmínek rozvoje středního odborného vzdělávání v České republice. To se nachází v nelehké situaci a přitom existuje v této oblasti spousta nevyužitého potenciálu. Cestu naznačuje např. Akční plán podpory odborného vzdělávání, který vznikl na MŠMT.
-        = link_to 'čtěte více', 'http://www.autanasbavi.cz/aktualita/10-ministryne-skolstvi-phdr-miroslava-kopicova', :class => 'button-more'
+        = link_to 'čtěte více', 'http://new.autanasbavi.cz/aktualita/10-ministryne-skolstvi-phdr-miroslava-kopicova', :class => 'button-more'
 .col2
   .boxSubmenu
     %ul

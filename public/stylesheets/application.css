@@ -207,7 +207,7 @@ a.overlaid,
   #content .boxSubmenu li a         { display: block; width: 228px; height: 26px; padding: 9px 0 0 10px; text-align: center; color: #fff; text-decoration: none; background: url('../images/bg-submenu.gif') no-repeat; }
   #content .boxSubmenu li a:hover   { background-position: 0 -35px; color: #fff !important; text-decoration: none !important; }
   #content .boxSubmenu li span      { display: block; width: 228px; height: 26px; padding: 9px 0 0 10px; text-align: center; color: #fff; text-decoration: none; background: url('../images/bg-submenu.gif') 0 -35px no-repeat; }
-  #content .boxSubmenu li.competition a { background-position: 0 -35px; }
+  #content .boxSubmenu li.competition a { background-position: 0 -35px; }	
 	/* /Sidebar boxes */
 
 
