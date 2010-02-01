@@ -9,5 +9,17 @@ class School < ActiveRecord::Base
     "#{id}-#{name.parameterize}"
   end
   
+  define_index do
+    indexes :name
+    indexes anotation
+    indexes street
+    indexes town
+    indexes zip_code
+    indexes email1
+    indexes email2
+    indexes www
+    indexes phone
+    indexes fax
+  end
   
 end

@@ -14,7 +14,7 @@ Rails::Initializer.run do |config|
   #           :version => '~> 0.5.3'          
   config.gem "mislav-will_paginate", :lib => "will_paginate", :source => "http://gems.github.com"
   config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com'
-  #config.gem 'thinking-sphinx', :lib     => 'thinking_sphinx', :version => '1.3.15'
+  config.gem 'thinking-sphinx', :lib     => 'thinking_sphinx', :version => '1.3.15'
 
   config.active_record.default_timezone = :utc
   

@@ -20,12 +20,23 @@ class InfoController < FrontendController
     @ur.user_id = current_user.id
     @ur.round_id = params[:round_id]
     @ur.save!
+    @check_answers = 0
     params[:answer].each_value do |a|
       @ua = UserAnswer.new
       @ua.user_id = current_user.id
       @ua.answer_id = a
       @ua.save!
-    end  
+      @a = Answer.find(a)
+      if(@a.rt)
+        @check_answers = @check_answers + 1
+      end  
+    end
+    debugger
+    if(@check_answers == 3)
+      @ur.update_attributes( :answer_ok => true)
+    else
+      @ur.update_attributes( :answer_ok => false)
+    end      
   end  
   
   def vto_1
