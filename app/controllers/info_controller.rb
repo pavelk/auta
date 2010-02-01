@@ -16,7 +16,16 @@ class InfoController < FrontendController
   def competition_submit
     add_crumb "Děkujeme za odpověď"
     #debugger
-    
+    @ur = UserRound.new
+    @ur.user_id = current_user.id
+    @ur.round_id = params[:round_id]
+    @ur.save!
+    params[:answer].each_value do |a|
+      @ua = UserAnswer.new
+      @ua.user_id = current_user.id
+      @ua.answer_id = a
+      @ua.save!
+    end  
   end  
   
   def vto_1

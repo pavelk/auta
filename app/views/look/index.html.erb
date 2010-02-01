@@ -1,0 +1,61 @@
+<div class="col1 main">
+
+  <h2>Výsledky vyhledávání - "<%= params[:search]  %>"</h2>
+<% if @results.size > 0 %>  
+<% for result in @results %>  
+  <div class="box box-detail">
+    <% if result.class == School %>
+      <h3><%= link_to highlight(result.name,params[:search]) , result %></h3>
+      <p class="results small">Vyhledáno v oblasti: <%= link_to 'Školy', schools_path %></p>
+      <p><%= truncate(highlight(result.anotation,params[:search]), :length => 320) %></p>
+      <%= link_to "Otevři profil", result, :class => 'button-more' %>
+    <% elsif result.class == Blog %>
+      <h3><%= link_to highlight(result.name,params[:search]) , result %></h3>
+      <p class="results small">Vyhledáno v oblasti: <%= link_to 'Aktuality', blogs_path %></p>
+      <p><%= highlight(result.perex, params[:search]) rescue nil %></p>
+      <%= link_to "Otevři aktualitu", result, :class => 'button-more' %>  
+    <% elsif result.class == Employer %>
+      <h3><%= link_to highlight(result.name,params[:search]) , result %></h3>
+      <p class="results small">Vyhledáno v oblasti: <%= link_to 'Zaměstnavatelé', employers_path %></p>
+      <p><%= truncate(highlight(result.anotation,params[:search]), :length => 320) %></p>
+      <%= link_to "Otevři profil", result, :class => 'button-more' %>    
+    <% elsif result.class == Hint %>
+      <h3><%= link_to highlight(result.name,params[:search]) , result %></h3>
+      <p class="results small">Vyhledáno v oblasti: <%= link_to 'Rady odborníků', hints_path %></p>
+      <%= truncate(result.perex, :length => 320) %>
+      <%= link_to "Otevři radu", result, :class => 'button-more' %>     
+    <% elsif result.class == Note %>
+      <h3><%= link_to highlight(result.name,params[:search]) , result %></h3>
+      <p class="results small">Vyhledáno v oblasti: <%= link_to 'Tiskové zprávy', notes_path %></p>
+      <p><%= truncate(highlight(result.perex,params[:search]), :length => 320) %></p>
+      <%= link_to "Otevři tiskovou zprávu", result, :class => 'button-more' %>    
+    <% elsif result.class == OpenDoorDay %>
+      <h3><%= link_to "#{formatted_date(result.datum1)}, #{result.school.name}", school_path(result.school) %></h3>
+      <p class="results small">Vyhledáno v oblasti: <%= link_to 'Dny otevřených dveří', open_door_days_path %></p>
+      <p><%= truncate(result.description, :length => 320) %></p>
+      <%= link_to "Otevři profil", school_path(result.school), :class => 'button-more' %>    
+    <% elsif result.class == Section %>
+      <h3><%= link_to highlight(result.name,params[:search]) , result %></h3>
+      <p class="results small">Vyhledáno v oblasti: <%= link_to 'Obory', sections_path %></p>
+      <p><%= truncate(result.description, :length => 320) %></p>
+      <%= link_to "Otevři obor", result, :class => 'button-more' %>        
+    <% end %>
+  </div>
+<% end %>
+<% else %>
+  <p>Na hledaný výraz "<%= params[:search]  %>" nebyl nalezen žádný výsledek.</p>
+<% end %>  
+  
+</div> <!-- /.col1 -->
+
+<div class="col2">
+  
+
+
+  
+  <%= render :partial => 'shared/submenu_navigation'%>
+  <%= render :partial => 'shared/box_search'%>
+  <%= render :partial => 'shared/box_sections'%>
+
+
+</div> <!-- /.col2 -->

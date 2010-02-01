@@ -10,7 +10,7 @@
     = page_title
     = stylesheet_link_tag 'application', 'prg'
     = stylesheet_link_tag 'print', :media => 'print'
-    = javascript_include_tag ['application','jquery-1.3.2', 'jquery.livequery.js']
+    = javascript_include_tag ['application','jquery-1.3.2', 'jquery.livequery.js', 'swfobject.js']
   %body
     %ul.noscreen
       %li= link_to 'Přeskočit na obsah', '#content'
@@ -20,11 +20,16 @@
       #head
         #logo
           %h1.overlaid
+        - banners = %w(580x138 auta 580x138_2)
+        :javascript
+          var so = new SWFObject("/images/#{banners.rand}.swf", "banner", 580, 138, "9", "#FFFFFF");
+          so.addParam("wmode", "transparent");
+          so.write("logo");
         #topForm
           = render :partial => 'shared/top_navigation'
           - if !current_user
             - @user_session = UserSession.new
-            - form_for @user_session, :url => user_session_path, :html => { :class => 'formBox' } do |f|
+            - form_for @user_session, :url => user_session_path, :method => 'post', :html => { :class => 'formBox' } do |f|
               %fieldset
                 .clearfix
                   = f.label :email, 'E-mail:'

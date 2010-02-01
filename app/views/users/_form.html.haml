@@ -1,8 +1,28 @@
 .clearfix
   .lab
-    = f.label :user_name, 'Jméno:'
+    = f.label :user_name, '*Jméno a příjmení:'
   .con  
     = f.text_field :user_name, :class => 'inp'
+.clearfix
+  .lab
+    = f.label :street, '*Ulice:'
+  .con  
+    = f.text_field :street, :class => 'inp'
+.clearfix
+  .lab
+    = f.label :city, '*Město:'
+  .con  
+    = f.text_field :city, :class => 'inp'
+.clearfix
+  .lab
+    = f.label :psc, '*PSČ:'
+  .con  
+    = f.text_field :psc, :class => 'inp'
+.clearfix
+  .lab
+    = f.label :birth, '*Datum narození:'
+  .con  
+    = f.text_field :birth, :class => 'inp'              
 .clearfix
   .lab
     = f.label :email, '*E-mail:'

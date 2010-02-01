@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100129145717) do
+ActiveRecord::Schema.define(:version => 20100201093606) do
 
   create_table "answers", :force => true do |t|
     t.integer "question_id"
@@ -170,12 +170,26 @@ ActiveRecord::Schema.define(:version => 20100129145717) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "user_answers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_answers", ["answer_id"], :name => "user_answers_answer_id_index"
+  add_index "user_answers", ["user_id"], :name => "user_answers_user_id_index"
+
   create_table "user_rounds", :force => true do |t|
     t.integer  "user_id"
     t.integer  "round_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "answer_ok"
   end
+
+  add_index "user_rounds", ["round_id"], :name => "user_rounds_round_id_index"
+  add_index "user_rounds", ["user_id"], :name => "user_rounds_user_id_index"
 
   create_table "users", :force => true do |t|
     t.string   "user_name",           :default => "",    :null => false
@@ -195,6 +209,10 @@ ActiveRecord::Schema.define(:version => 20100129145717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",              :default => false, :null => false
+    t.string   "street"
+    t.string   "city"
+    t.string   "psc"
+    t.string   "birth"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
