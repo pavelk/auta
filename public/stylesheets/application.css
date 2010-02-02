@@ -405,6 +405,7 @@ a.overlaid,
     
     #content .boxBanner { border: none !important; background: none !important; }
 	#content .boxBanner .in { width:241px; height:100px; }
+	#content .boxBanner .btn { width:290px; height:41px; }
 
 
     /* Interactive map sections */
