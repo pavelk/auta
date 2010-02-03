@@ -293,7 +293,7 @@ a.overlaid,
   .boxArticles .item    { text-align: justify; }
   .boxArticles h2       { margin-bottom: 1em; }
   .boxArticles .item p  { margin-bottom: 1em; }
-  .boxArticles .col2 .boxBanner { margin-top: -30px !important; }
+  .boxArticles .col2 .boxBanner { margin-top: -20px !important; }
 
 
   .filter                 { padding: 0 0 20px 15px; }
