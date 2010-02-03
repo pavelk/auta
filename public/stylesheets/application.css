@@ -403,7 +403,7 @@ a.overlaid,
     #content .gallery .item { width: 150px; height: 150px; float: left; margin: 0 40px 10px 0 !important; }
     
     
-    #content .boxBanner { border: none !important; background: none !important; }
+    #content .boxBanner { border: none !important; background: none !important; border: 1px solid red; }
 	#content .boxBanner .in { width:241px; height:100px; background: none !important; padding: 0 !important; }
 	#content .boxBanner .btn { width:290px; height:35px; }
 
