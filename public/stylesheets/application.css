@@ -293,6 +293,7 @@ a.overlaid,
   .boxArticles .item    { text-align: justify; }
   .boxArticles h2       { margin-bottom: 1em; }
   .boxArticles .item p  { margin-bottom: 1em; }
+  .boxArticles .col2 .boxBanner { margin-top: -30px !important; }
 
 
   .filter                 { padding: 0 0 20px 15px; }
@@ -403,7 +404,7 @@ a.overlaid,
     #content .gallery .item { width: 150px; height: 150px; float: left; margin: 0 40px 10px 0 !important; }
     
     
-    #content .boxBanner { border: none !important; background: none !important; border: 1px solid red; }
+    #content .boxBanner { border: none !important; background: none !important; }
 	#content .boxBanner .in { width:241px; height:100px; background: none !important; padding: 0 !important; }
 	#content .boxBanner .btn { width:290px; height:35px; }
 
