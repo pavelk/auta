@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     c.validates_length_of_password_field_options = { :minimum => 5 }
   end
   
-  validates_presence_of :user_name, :street, :city, :psc, :birth
+  validates_presence_of :user_name, :birth
   
   def activate_account!
     reset_perishable_token!
