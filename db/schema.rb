@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100201093606) do
+ActiveRecord::Schema.define(:version => 20100204134054) do
 
   create_table "answers", :force => true do |t|
     t.integer "question_id"
@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(:version => 20100201093606) do
     t.string   "city"
     t.string   "psc"
     t.string   "birth"
+    t.boolean  "urole",               :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

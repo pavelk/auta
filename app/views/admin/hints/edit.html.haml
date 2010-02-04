@@ -10,7 +10,23 @@
 - form_for(:hint, :url => object_url, :html => { :method => :put }) do |f|
   = render :partial => "form", :locals => { :f => f }
   %p= submit_tag "Upravit"
-  
+%label Přidat obrázek:
+%br
+%br
+- form_for(:hint, :url => {:action => "add_image"}, :html => { :multipart => true }) do |f|
+  %input{ :type => "file", :name => "photo[photo]"}
+  %input{ :type => 'hidden', :name => 'id', :value => "#{@object.id}" }
+  = f.submit "Přidat obrázek"
+
+.gallery
+  %h3 Obrázky
+  - @object.photos.each do |row|
+    .img
+      = image_tag row.photo.url(:small)
+      = link_to 'Odstranit', remove_hint_image_path(@object, :photo => row.id), :confirm => 'Jste si jistí?', :method => :delete
+%br
+%br
+%br 
 = link_to 'Ukázat na webu', hint_path(object), :target => '_blank'
 |
 = link_to 'Zpět', collection_url

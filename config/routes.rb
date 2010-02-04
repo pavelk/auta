@@ -103,7 +103,22 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :hints
     admin.resources :rounds
   end              
-
+  
+  map.add_blog_image 'admin/blogs/add_image/:object/:id', :controller => 'admin/blogs', :action => 'add_image'
+  map.remove_blog_image 'admin/blogs/remove_image/:object/:id', :controller => 'admin/blogs', :action => 'remove_image'
+  
+  map.add_note_image 'admin/notes/add_image/:object/:id', :controller => 'admin/notes', :action => 'add_image'
+  map.remove_note_image 'admin/notes/remove_image/:object/:id', :controller => 'admin/notes', :action => 'remove_image'
+  
+  map.add_hint_image 'admin/hints/add_image/:object/:id', :controller => 'admin/hints', :action => 'add_image'
+  map.remove_hint_image 'admin/hints/remove_image/:object/:id', :controller => 'admin/hints', :action => 'remove_image'
+  
+  map.add_school_image 'admin/schools/add_image/:object/:id', :controller => 'admin/schools', :action => 'add_image'
+  map.remove_school_image 'admin/schools/remove_image/:object/:id', :controller => 'admin/schools', :action => 'remove_image'
+  
+  map.add_employer_image 'admin/employers/add_image/:object/:id', :controller => 'admin/blogs', :action => 'add_image'
+  map.remove_employer_image 'admin/employers/remove_image/:object/:id', :controller => 'admin/blogs', :action => 'remove_image'
+  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

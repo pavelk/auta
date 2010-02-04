@@ -4,7 +4,7 @@ class Admin::AdminController < ResourceController::Base
   
   before_filter :set_values, :check_authorization
   #before_filter :check_authorization
-  
+    
   protected
       
     def collection
@@ -19,7 +19,7 @@ class Admin::AdminController < ResourceController::Base
   
     def check_authorization
       #debugger
-      unless current_user.id == 1
+      unless current_user.urole == true
         #store_location
         flash[:error] = "Musíte se přihlásit pro přístup na tuto stránku."
         redirect_to new_user_session_url
