@@ -92,8 +92,8 @@ ActionController::Routing::Routes.draw do |map|
   
   #map.round '/soutez', :controller => 'rounds', :action
                 
-  #map.admin '/admin', :controller => 'admin/schools', :action => 'index'
-=begin
+  map.admin '/admin', :controller => 'admin/schools', :action => 'index'
+
   map.namespace :admin do |admin|
     admin.resources :employers 
     admin.resources :schools
@@ -103,7 +103,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :hints
     admin.resources :rounds
   end              
-=end
+
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
