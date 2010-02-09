@@ -102,6 +102,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :notes
     admin.resources :hints
     admin.resources :rounds
+    admin.resources :users
+    admin.resources :rounds
   end              
   
   map.add_blog_image 'admin/blogs/add_image/:object/:id', :controller => 'admin/blogs', :action => 'add_image'

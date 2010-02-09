@@ -1,0 +1,30 @@
+%h1 Uživatelé
+%h4
+  Celkem
+  = @collection.total_entries
+  záznamů
+%table
+  %tr
+    %td jméno
+    %td e-mail
+    %td ulice
+    %td město
+    %td psč
+    %td datum narození
+    %td počet přihlášení
+    %td aktivace
+  - User.find(:all, :conditions => 'urole = 0').each do |object|
+    %tr{:class => cycle('odd', 'even') }        
+      %td= object.user_name
+      %td= object.email
+      %td= object.street
+      %td= object.city
+      %td= object.psc
+      %td= object.birth
+      %td= object.login_count
+      %td= object.active
+  %tr
+    %td{ :colspan => '8' } &nbsp;
+  %tr
+    %td{ :colspan => '8' }
+      = will_paginate @collection, :previous_label => 'Předchozí', :next_label => 'Další'

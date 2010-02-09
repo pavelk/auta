@@ -1,6 +1,7 @@
 class Admin::RoundsController < Admin::AdminController
   
-  update.wants.html { redirect_to collection_url }
-  create.wants.html { redirect_to collection_url }
+  def index
+      @rounds = UserRound.all(:conditions => 'answer_ok = 1').paginate :page => params[:page]
+  end
   
 end

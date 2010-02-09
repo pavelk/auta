@@ -1,14 +1,11 @@
 %h1 Soutěžní kola
-
+%h4
+  Celkem
+  = @rounds.total_entries
+  záznamů
 %table
   %tr
-  - @collection.each do |object|
+  - @rounds.each do |object|
     %tr
       %td= "#{object.id}. kolo"
-      %td= object.date_from
-      %td= object.date_till
-      %td= link_to 'Editovat', edit_object_url(round)
-
-%br/
-
-=link_to 'Nové kolo', new_object_url
+      %td= object.user.user_name
