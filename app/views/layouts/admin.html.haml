@@ -26,7 +26,8 @@
       });
   %body
     #view
-      = render :partial => 'shared/admin/main_navigation'
+      - if (current_user.urole == 1)
+        = render :partial => 'shared/admin/main_navigation'
       %br
       = yield
     %br  

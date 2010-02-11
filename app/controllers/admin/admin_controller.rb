@@ -19,7 +19,7 @@ class Admin::AdminController < ResourceController::Base
   
     def check_authorization
       #debugger
-      unless current_user.urole == true
+      unless current_user.urole > 0
         #store_location
         flash[:error] = "Musíte se přihlásit pro přístup na tuto stránku."
         redirect_to new_user_session_url
