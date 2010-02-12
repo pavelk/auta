@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :answers, :through => :user_answers
   
   has_one :school
+  has_one :employer
   
   acts_as_authentic do |c|
     c.login_field = 'email'
@@ -55,6 +56,43 @@ class User < ActiveRecord::Base
         user.password = psswd
         user.password_confirmation = psswd
         user.urole = 2
+        user.active = 1
+        user.save
+        if user.save
+          puts "#{school.name} - OK!"
+          school.user_id = user.id 
+          school.save
+        end              
+      end
+      workbook.close
+    end
+    
+    def self.create_employers_users
+      workbook = Spreadsheet::Excel.new("#{RAILS_ROOT}/public/employers.xls")
+      worksheet = workbook.add_worksheet("Zamestnavatele")
+      worksheet.write(0, 0, "Zamestnavatel")
+      worksheet.write(0, 1, "Login")
+      worksheet.write(0, 2, "Heslo")
+
+      s = Employer.all(:conditions => 'LENGTH(email1) > 1')
+      row = 1
+      s.each do |school|
+        psswd = newpass(8)
+        nameschool = school.name.to_s
+        worksheet.write(row, 0, nameschool.chars.normalize(:kd).to_s.gsub(/[^\x00-\x7F]/, ''))
+        #worksheet.write(row, 0, "#{school.name}")
+        worksheet.write(row, 1, "#{school.email1}")
+        worksheet.write(row, 2, "#{psswd}")     
+        row += 1
+      
+        user = User.new 
+        user.user_name = school.name 
+        user.email = school.email1
+        user.birth = '-----'
+        user.password = psswd
+        user.password_confirmation = psswd
+        user.urole = 3
+        user.active = 1
         user.save
         if user.save
           puts "#{school.name} - OK!"
@@ -71,7 +109,7 @@ class User < ActiveRecord::Base
       skip = 1
       #UserMailer.deliver_registration_confirmation(@user)
       sheet.each(skip) do |row|
-        #UserMailer.deliver_registration_confirmation(row[1], row[2])
+        #Notifier.deliver_registration_confirmation(row[1], row[2])
         puts row[0]
         puts 'OK'
         puts ' ____ '
@@ -81,7 +119,7 @@ class User < ActiveRecord::Base
     def self.test_mailer
       users = %w(viktor.svoboda@eurorscg4d.cz pavel.krusek@gmail.com)
       users.each do |user|
-        UserMailer.deliver_registration_confirmation_school( user, "nejake_heslo" )
+        Notifier.deliver_registration_confirmation_school( user, "nejake_heslo" )
       end     
     end
     
