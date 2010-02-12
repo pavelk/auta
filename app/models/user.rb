@@ -107,9 +107,8 @@ class User < ActiveRecord::Base
       workbook = Spreadsheet::ParseExcel.parse("#{RAILS_ROOT}/public/schools.xls") 
       sheet = workbook.worksheet(0) 
       skip = 1
-      #UserMailer.deliver_registration_confirmation(@user)
       sheet.each(skip) do |row|
-        #Notifier.deliver_registration_confirmation(row[1], row[2])
+        Notifier.deliver_registration_confirmation_school(row[1], row[2])
         puts row[0]
         puts row[1]
         puts row[2]
@@ -122,9 +121,8 @@ class User < ActiveRecord::Base
       workbook = Spreadsheet::ParseExcel.parse("#{RAILS_ROOT}/public/employers.xls") 
       sheet = workbook.worksheet(0) 
       skip = 1
-      #UserMailer.deliver_registration_confirmation(@user)
       sheet.each(skip) do |row|
-        #Notifier.deliver_registration_confirmation(row[1], row[2])
+        Notifier.deliver_registration_confirmation_employer(row[1], row[2])
         puts row[0]
         puts row[1]
         puts row[2]
@@ -136,7 +134,7 @@ class User < ActiveRecord::Base
     def self.test_mailer
       users = %w(viktor.svoboda@eurorscg4d.cz pavel.krusek@gmail.com)
       users.each do |user|
-        Notifier.deliver_registration_confirmation_school( user, "nejake_heslo" )
+        Notifier.deliver_registration_confirmation_employer( user, "nejake_heslo" )
       end     
     end
     

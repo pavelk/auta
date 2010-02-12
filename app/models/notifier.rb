@@ -31,5 +31,17 @@ class Notifier < ActionMailer::Base
     body[:email] = email
     body[:password] = password
   end
+  
+  def registration_confirmation_employer( email, password )
+    @recipients   = email
+    @from         = "info@autanasbavi.cz"
+    headers         "Reply-to" => "info@autanasbavi.cz"
+    @subject      = "www.autanasbavi.cz"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+ 
+    body[:email] = email
+    body[:password] = password
+  end
 
 end
