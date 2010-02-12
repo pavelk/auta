@@ -9,3 +9,4 @@ config/database.yml
 config/deploy.rb
 config/*sphinx*
 public/assets
+public/*.xls

@@ -5,6 +5,8 @@ class School < ActiveRecord::Base
   
   has_many :photos, :as => :attachable, :dependent => :destroy
   
+  belongs_to :user
+  
   default_scope :order => ["name ASC"]
   
   def to_param
