@@ -111,6 +111,23 @@ class User < ActiveRecord::Base
       sheet.each(skip) do |row|
         #Notifier.deliver_registration_confirmation(row[1], row[2])
         puts row[0]
+        puts row[1]
+        puts row[2]
+        puts 'OK'
+        puts ' ____ '
+      end
+    end
+    
+    def self.read_employers_users
+      workbook = Spreadsheet::ParseExcel.parse("#{RAILS_ROOT}/public/employers.xls") 
+      sheet = workbook.worksheet(0) 
+      skip = 1
+      #UserMailer.deliver_registration_confirmation(@user)
+      sheet.each(skip) do |row|
+        #Notifier.deliver_registration_confirmation(row[1], row[2])
+        puts row[0]
+        puts row[1]
+        puts row[2]
         puts 'OK'
         puts ' ____ '
       end
