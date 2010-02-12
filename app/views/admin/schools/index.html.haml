@@ -1,21 +1,35 @@
-%h1 Školy
-%h4
-  Celkem
-  = @collection.total_entries
-  záznamů
-%table
-  %tr
-  - @schools.each do |school|
-    %tr{:class => cycle('odd', 'even') }        
-      %td= link_to school.name, edit_object_url(school)
-      %td= school.street
-      %td= school.town
-      %td= link_to 'Odstranit', object_url(school), :confirm => 'Jste si jistí?', :method => :delete
-  %tr
-    %td{ :colspan => '4' } &nbsp;
-  %tr
-    %td{ :colspan => '4' }
-      = will_paginate @schools, :previous_label => 'Předchozí', :next_label => 'Další'
-%br/
+- if current_user.urole == 1
+  %h1 Školy
+  %h4
+    Celkem
+    = @collection.total_entries
+    záznamů
+  %table
+    %tr
+    - @schools.each do |school|
+      %tr{:class => cycle('odd', 'even') }        
+        %td= link_to school.name, edit_object_url(school)
+        %td= school.street
+        %td= school.town
+        %td= link_to 'Odstranit', object_url(school), :confirm => 'Jste si jistí?', :method => :delete
+    %tr
+      %td{ :colspan => '4' } &nbsp;
+    %tr
+      %td{ :colspan => '4' }
+        = will_paginate @schools, :previous_label => 'Předchozí', :next_label => 'Další'
+  %br/
 
-=link_to 'Nová škola', new_object_url
+  =link_to 'Nová škola', new_object_url
+- elsif current_user.urole == 2
+  - @school = School.first(:conditions => "user_id = #{current_user.id}") 
+  %h1 Škola 
+  %table
+    %tr
+      %tr{:class => cycle('odd', 'even') }        
+        %td= link_to @school.name, edit_object_url(@school)
+        %td= @school.street
+        %td= @school.town
+      %tr
+        %td{ :colspan => '3' } &nbsp;
+      %tr
+        %td{ :colspan => '3' } 

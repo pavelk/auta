@@ -48,21 +48,41 @@ class User < ActiveRecord::Base
         worksheet.write(row, 2, "#{psswd}")     
         row += 1
       
-        #user = User.new 
-        #user.user_name = school.name 
-        #user.email = school.email1
-        #user.birth = '-----'
-        #user.password = psswd
-        #user.password_confirmation = psswd
-        #user.urole = 2
-        #user.save
-        #if user.save
-        #  puts "#{school.name} - OK!"
-        #  school.user_id = user.id 
-        #  school.save
-        #end              
+        user = User.new 
+        user.user_name = school.name 
+        user.email = school.email1
+        user.birth = '-----'
+        user.password = psswd
+        user.password_confirmation = psswd
+        user.urole = 2
+        user.save
+        if user.save
+          puts "#{school.name} - OK!"
+          school.user_id = user.id 
+          school.save
+        end              
       end
       workbook.close
+    end
+    
+    def self.read_schools_users
+      workbook = Spreadsheet::ParseExcel.parse("#{RAILS_ROOT}/public/schools.xls") 
+      sheet = workbook.worksheet(0) 
+      skip = 1
+      #UserMailer.deliver_registration_confirmation(@user)
+      sheet.each(skip) do |row|
+        #UserMailer.deliver_registration_confirmation(row[1], row[2])
+        puts row[0]
+        puts 'OK'
+        puts ' ____ '
+      end
+    end
+    
+    def self.test_mailer
+      users = %w(viktor.svoboda@eurorscg4d.cz pavel.krusek@gmail.com)
+      users.each do |user|
+        UserMailer.deliver_registration_confirmation_school( user, "nejake_heslo" )
+      end     
     end
     
     def self.newpass(len)

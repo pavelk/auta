@@ -48,6 +48,9 @@
             = current_user.email
             %br
             = link_to "Odhlásit se", user_session_path, :method => :delete, :confirm => 'Opravdu se chcete odhlásit?'
+            %span &nbsp; | &nbsp;
+            - if(current_user.urole > 0)
+              = link_to "Administrace", admin_path
         #mainMenu
           = render :partial => 'shared/main_navigation'
       %hr.hidden
