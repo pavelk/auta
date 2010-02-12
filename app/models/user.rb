@@ -1,3 +1,6 @@
+require 'digest/sha1'
+require "spreadsheet/excel"
+require 'parseexcel'
 class User < ActiveRecord::Base
   
   has_many :user_rounds

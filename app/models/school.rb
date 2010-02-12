@@ -5,6 +5,8 @@ class School < ActiveRecord::Base
   
   has_many :photos, :as => :attachable, :dependent => :destroy
   
+  default_scope :order => ["name ASC"]
+  
   def to_param
     "#{id}-#{name.parameterize}"
   end
