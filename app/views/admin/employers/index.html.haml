@@ -1,21 +1,36 @@
-%h1 Zaměstnavatelé
-%h4
-  Celkem
-  = @collection.total_entries
-  záznamů
-%table
-  %tr
-  - @collection.each do |object|
-    %tr{:class => cycle('odd', 'even') }        
-      %td= link_to object.name, edit_object_url(object)
-      %td= object.street1
-      %td= object.town
-      %td= link_to 'Odstranit', object_url(object), :confirm => 'Jste si jistí?', :method => :delete
-  %tr
-    %td{ :colspan => '4' } &nbsp;
-  %tr
-    %td{ :colspan => '4' }
-      = will_paginate @collection, :previous_label => 'Předchozí', :next_label => 'Další'
-%br/
+- if current_user.urole == 1
+  %h1 Zaměstnavatelé
+  %h4
+    Celkem
+    = @collection.total_entries
+    záznamů
+  %table
+    %tr
+    - @collection.each do |object|
+      %tr{:class => cycle('odd', 'even') }        
+        %td= link_to object.name, edit_object_url(object)
+        %td= object.street1
+        %td= object.town
+        %td= link_to 'Odstranit', object_url(object), :confirm => 'Jste si jistí?', :method => :delete
+    %tr
+      %td{ :colspan => '4' } &nbsp;
+    %tr
+      %td{ :colspan => '4' }
+        = will_paginate @collection, :previous_label => 'Předchozí', :next_label => 'Další'
+  %br/
 
-=link_to 'Nový zaměstnavatel', new_object_url
+  =link_to 'Nový zaměstnavatel', new_object_url
+
+- elsif current_user.urole == 3
+  - @employer = Employer.first(:conditions => "user_id = #{current_user.id}") 
+  %h1 Zaměstnavatel
+  %table
+    %tr
+      %tr{:class => cycle('odd', 'even') }        
+        %td= link_to @employer.name, edit_object_url(@employer)
+        %td= @employer.street1
+        %td= @employer.town
+      %tr
+        %td{ :colspan => '3' } &nbsp;
+      %tr
+        %td{ :colspan => '3' }
