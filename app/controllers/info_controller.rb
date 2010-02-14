@@ -11,7 +11,8 @@ class InfoController < FrontendController
     add_crumb "Soutěž"
     #debugger
     @roundfirst = Round.first
-    @round = Round.first( :conditions => 'date_from < now() AND date_till > now()')
+    #@round = Round.first( :conditions => 'date_from < now() AND date_till > now()')
+    @round = Round.first( :conditions => 'id = 2') 
   end
   
   def competition_submit
