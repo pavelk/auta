@@ -6,14 +6,36 @@
   %p 
     Každý týden od pondělka 1.2. po dobu měsíce únor budou připraveny nové otázky. Abyste se mohli zúčastnit soutěže, je nutné zodpovědět všechny otázky. Rozhodující pro výhru bude čas došlých odpovědí a jejich správnost, viz 
     = link_to 'pravidla.', rules_path
-
-  %p.alt.big="#{@round.id}.kolo otázek běží od #{@round.date_from.strftime('%d.%m.')} do #{@round.date_till.strftime('%d.%m.')}" 
-
+  
+  - checkfirst = current_user.rounds.find(:first, :conditions => [ 'round_id = ?', @roundfirst.id])
+  - if(checkfirst == nil)
+    %p.red Našli jste soutěž na webu Auta nás baví až nyní? Nevadí! V archivu najdete otázky ze všech kol, do soutěže se můžete zapojit kdykoli. <br />Rozhodující je pak odeslání posledního emailu s odpověďmi na čtvrté kolo otázek a mít vyplněna i předchozí kola. Potřebovat samozřejmě budete i špetku štěstí:-) Držíme vám palce.
+    %p.alt.big="#{@roundfirst.id}.kolo otázek běželo od #{@roundfirst.date_from.strftime('%d.%m.')} do #{@roundfirst.date_till.strftime('%d.%m.')}"
+    %form.formBox{ :action => '/soutez_odpoved', :method => 'post'  }
+      %fieldset
+      - @roundfirst.questions.each do |question|
+        .item
+          %h3.q= question.question
+          - question.answers.each do |answer|
+            .clearfix.a
+              .con
+                %input{ :type => 'radio', :id => "#{question.id}-#{answer.id}", :name => "[answer][#{question.id}]", :value => "#{answer.id}" }
+              .lab
+                %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
+      %input{ :type => 'hidden', :id => "round_id", :name => "round_id", :value => "#{@roundfirst.id}" }
+      %input{ :type => 'hidden', :id => "first", :name => "first", :value => "first" }
+      %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
+  - else
+    -#%p.alt.big V prvním kole jsi soutěžil! Zde jsou otázky z prvního kola s Tvými odpověďmi.
+  %br
+  %br
+  %br  
+  %p.alt.big="#{@round.id}.kolo otázek běží od #{@round.date_from.strftime('%d.%m.')} do #{@round.date_till.strftime('%d.%m.')}"
   .gallery
     .item= image_tag "/images/soutez-1.jpg"
     .item= image_tag "/images/soutez-2.jpg"
     .item= image_tag "/images/soutez-3.jpg"
-  - check = current_user.rounds.find(:first, :conditions => [ 'round_id >= ?', @round.id])
+  - check = current_user.rounds.find(:first, :conditions => [ 'round_id = ?', @round.id])
   - if check == nil
     %form.formBox{ :action => '/soutez_odpoved', :method => 'post'  }
       %fieldset
@@ -27,6 +49,7 @@
               .lab
                 %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
       %input{ :type => 'hidden', :id => "round_id", :name => "round_id", :value => "#{@round.id}" }
+      %input{ :type => 'hidden', :id => "first", :name => "first", :value => "second" }
       %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
   - else
     %p V tomto kole jste již soutěžili.

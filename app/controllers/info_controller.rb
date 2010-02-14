@@ -10,6 +10,7 @@ class InfoController < FrontendController
   def competition
     add_crumb "Soutěž"
     #debugger
+    @roundfirst = Round.first
     @round = Round.first( :conditions => 'date_from < now() AND date_till > now()')
   end
   
@@ -31,12 +32,15 @@ class InfoController < FrontendController
         @check_answers = @check_answers + 1
       end  
     end
-    debugger
+    #debugger
     if(@check_answers == 3)
       @ur.update_attributes( :answer_ok => true)
     else
       @ur.update_attributes( :answer_ok => false)
-    end      
+    end
+    if(params[:first] == 'first')
+      redirect_to competition_path
+    end       
   end  
   
   def vto_1
