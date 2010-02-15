@@ -103,6 +103,13 @@ class User < ActiveRecord::Base
       workbook.close
     end
     
+    def self.send_mail_users
+      users = User.all(:conditions => 'urole = 0')
+      users.each do |user|
+        puts user.email
+      end  
+    end
+    
     def self.read_schools_users
       workbook = Spreadsheet::ParseExcel.parse("#{RAILS_ROOT}/public/schools.xls") 
       sheet = workbook.worksheet(0) 
@@ -134,7 +141,8 @@ class User < ActiveRecord::Base
     def self.test_mailer
       users = %w(viktor.svoboda@eurorscg4d.cz pavel.krusek@gmail.com)
       users.each do |user|
-        Notifier.deliver_registration_confirmation_employer( user, "nejake_heslo" )
+        #Notifier.deliver_registration_confirmation_employer( user, "nejake_heslo" )
+        Notifier.deliver_user(user)
       end     
     end
     
