@@ -136,7 +136,7 @@ a.overlaid,
 
 /* -- Layout -- */
 #view         { width: 960px; margin: 0 auto; }
-#head         { height: 100%; }
+#head         { height: 165px; }
 #content      { padding: 15px 0 30px 0; clear: both; }
 #foot         { clear: both; margin: 0 5px; height: 30px; padding: 8px 20px 0; border-top: 1px #dbdbdb solid; }
 
