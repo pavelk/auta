@@ -44,7 +44,7 @@ class Notifier < ActionMailer::Base
     body[:password] = password
   end
   
-  def deliver_user_mail(email)
+  def send_user_mail(email)
     @recipients   = email
     @from         = "info@autanasbavi.cz"
     headers         "Reply-to" => "info@autanasbavi.cz"
