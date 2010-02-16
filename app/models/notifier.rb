@@ -1,6 +1,15 @@
 class Notifier < ActionMailer::Base
   default_url_options[:host] = "autanasbavi.cz"
 
+  def send_user_mail(email)
+    @recipients   = email
+    @from         = "info@autanasbavi.cz"
+    headers         "Reply-to" => "info@autanasbavi.cz"
+    @subject      = "www.autanasbavi.cz"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+  end
+  
   def activate_account(user)
     subject "Aktivace uctu"
     from "Auta nas bavi <noreply@autanasbavi.cz>"
@@ -43,14 +52,4 @@ class Notifier < ActionMailer::Base
     body[:email] = email
     body[:password] = password
   end
-  
-  def send_user_mail(email)
-    @recipients   = email
-    @from         = "info@autanasbavi.cz"
-    headers         "Reply-to" => "info@autanasbavi.cz"
-    @subject      = "www.autanasbavi.cz"
-    @sent_on      = Time.now
-    @content_type = "text/html"
-  end  
-
 end

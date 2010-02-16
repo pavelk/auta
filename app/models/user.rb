@@ -141,8 +141,7 @@ class User < ActiveRecord::Base
     def self.test_mailer
       users = %w(viktor.svoboda@eurorscg4d.cz pavel.krusek@gmail.com)
       users.each do |user|
-        #Notifier.deliver_registration_confirmation_employer( user, "nejake_heslo" )
-        Notifier.send_user_mail(user)
+        Notifier.deliver_send_user_mail(user)
       end     
     end
     
