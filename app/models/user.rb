@@ -107,6 +107,7 @@ class User < ActiveRecord::Base
       users = User.all(:conditions => 'urole = 0')
       users.each do |user|
         puts user.email
+        Notifier.deliver_send_user_mail(user.email)
       end  
     end
     
