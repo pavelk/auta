@@ -52,7 +52,11 @@
             - if(current_user.urole == 2 || current_user.urole == 1)
               = link_to "Administrace", admin_path
             - if(current_user.urole == 3)
-              = link_to "Administrace", admin_employers_path  
+              = link_to "Administrace", admin_employers_path
+            %br
+            %br
+            %br
+            %br                           
         #mainMenu
           = render :partial => 'shared/main_navigation'
       %hr.hidden
