@@ -23,5 +23,19 @@ class Admin::EmployersController < Admin::AdminController
       format.html { redirect_to(edit_object_url(@emp)) }
     end
   end
+  
+  def map
+    @employer = Employer.find(params[:id])
+  end
+  
+  def add_marker
+    #debugger
+    @employer = Employer.find(params[:id])
+    respond_to do |format|
+      if @employer.update_attributes(params[:employer])
+        format.html { redirect_to collection_url }
+      end
+    end
+  end
 
 end

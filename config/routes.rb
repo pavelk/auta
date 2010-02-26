@@ -95,8 +95,8 @@ ActionController::Routing::Routes.draw do |map|
   map.admin '/admin', :controller => 'admin/schools', :action => 'index'
 
   map.namespace :admin do |admin|
-    admin.resources :employers 
-    admin.resources :schools
+    admin.resources :employers, :member => { :add_marker => :put } 
+    admin.resources :schools, :member => { :add_marker => :put }
     admin.resources :sections
     admin.resources :blogs
     admin.resources :notes
@@ -105,6 +105,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
     admin.resources :rounds
   end              
+  
+  map.school_map 'admin/schools/mapa/:id', :controller => 'admin/schools', :action => 'map'
+  map.emp_map 'admin/employers/mapa/:id', :controller => 'admin/employers', :action => 'map'
   
   map.add_blog_image 'admin/blogs/add_image/:object/:id', :controller => 'admin/blogs', :action => 'add_image'
   map.remove_blog_image 'admin/blogs/remove_image/:object/:id', :controller => 'admin/blogs', :action => 'remove_image'

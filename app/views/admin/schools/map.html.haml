@@ -1,0 +1,22 @@
+= render(:partial => "shared/map")
+- form_for @school, :url => {:action => "add_marker"} do |f|
+= f.error_messages
+  %h1
+    = @school.name
+  -#= link_to 'Zpět na seznam', schools_path(:page => params[:page])
+  -#= link_to 'Zpět na školu', @school
+  = marker(@school.lat.to_s, @school.lng.to_s, @school.name)
+  %p
+    longtitude:
+    = f.text_field :lng, :readonly => 'true'
+  %p
+    latitude:
+    = f.text_field :lat, :readonly => 'true'
+  %p
+    -#-%input{:type => 'hidden', :name => 'page', :value => params[:page] }
+    = f.submit "Přidat / upravit místo"
+  #map
+  #poloha
+    = @school.name
+    = @school.street
+    = @school.town

@@ -76,4 +76,34 @@ module ApplicationHelper
      return value
   end
   
+  def marker value1, value2, value3
+    if value1.length == 0 && value2.length == 0
+      '<script type="text/javascript"> 
+    	  var marker = undefined; 
+    	</script>'
+    else	
+      "<script type=\"text/javascript\"> 
+    	  var marker =
+    	  { 
+        'latitude': #{value1},
+        'longitude': #{value2},
+        'name': '#{value3}'} 
+    	</script>"      
+    end  
+  end
+  
+  
+  def ismap value
+    #if value
+    if value.size > 0
+      ' box-finish'
+    end  
+  end
+  
+  def viktor value
+    if value
+      ' box-map'
+    end  
+  end
+  
 end

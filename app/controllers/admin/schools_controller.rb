@@ -24,4 +24,18 @@ class Admin::SchoolsController < Admin::AdminController
     end
   end
   
+  def map
+    @school = School.find(params[:id])
+  end
+  
+  def add_marker
+    #debugger
+    @school = School.find(params[:id])
+    respond_to do |format|
+      if @school.update_attributes(params[:school])
+        format.html { redirect_to collection_url }
+      end
+    end
+  end  
+  
 end

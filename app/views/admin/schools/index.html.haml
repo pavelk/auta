@@ -9,13 +9,14 @@
     - @schools.each do |school|
       %tr{:class => cycle('odd', 'even') }        
         %td= link_to school.name, edit_object_url(school)
+        %td= link_to 'mapa', school_map_path(school)
         %td= school.street
         %td= school.town
         %td= link_to 'Odstranit', object_url(school), :confirm => 'Jste si jistí?', :method => :delete
     %tr
-      %td{ :colspan => '4' } &nbsp;
+      %td{ :colspan => '5' } &nbsp;
     %tr
-      %td{ :colspan => '4' }
+      %td{ :colspan => '5' }
         = will_paginate @schools, :previous_label => 'Předchozí', :next_label => 'Další'
   %br/
 
@@ -27,9 +28,10 @@
     %tr
       %tr{:class => cycle('odd', 'even') }        
         %td= link_to @school.name, edit_object_url(@school)
+        %td= link_to 'mapa', school_map_path(school)
         %td= @school.street
         %td= @school.town
       %tr
-        %td{ :colspan => '3' } &nbsp;
+        %td{ :colspan => '4' } &nbsp;
       %tr
-        %td{ :colspan => '3' } 
+        %td{ :colspan => '4' } 
