@@ -54,6 +54,29 @@
   %br
   %br
   
+  - checkth = current_user.rounds.find(:first, :conditions => [ 'round_id = ?', @roundth.id])
+  - if(checkth == nil)
+    %p.alt.big="#{@roundth.id}.kolo otázek běželo od #{@roundth.date_from.strftime('%d.%m.')} do #{@roundth.date_till.strftime('%d.%m.')}"
+    %form.formBox{ :action => '/soutez_odpoved', :method => 'post'  }
+      %fieldset
+      - @roundth.questions.each do |question|
+        .item
+          %h3.q= question.question
+          - question.answers.each do |answer|
+            .clearfix.a
+              .con
+                %input{ :type => 'radio', :id => "#{question.id}-#{answer.id}", :name => "[answer][#{question.id}]", :value => "#{answer.id}" }
+              .lab
+                %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
+      %input{ :type => 'hidden', :id => "round_id", :name => "round_id", :value => "#{@roundth.id}" }
+      %input{ :type => 'hidden', :id => "first", :name => "first", :value => "first" }
+      %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
+  - else
+    -#%p.alt.big V prvním kole jsi soutěžil! Zde jsou otázky z prvního kola s Tvými odpověďmi.
+  %br
+  %br
+  %br
+  
       
   %p.alt.big="#{@round.id}.kolo otázek běží od #{@round.date_from.strftime('%d.%m.')} do #{@round.date_till.strftime('%d.%m.')}"
   .gallery
