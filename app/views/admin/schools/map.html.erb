@@ -1,0 +1,20 @@
+<%= render(:partial => "shared/map") %>
+<% form_for @school, :url => {:action => "add_marker"} do |f|  %>
+  <h1><%= @school.name %></h1>
+  <%= marker(@school.lat.to_s, @school.lng.to_s, @school.name)%>
+  <p>
+  longtitude:<%= f.text_field :lng, :readonly => 'true'%>
+  </p>
+  <p>
+  latitude:<%= f.text_field :lat, :readonly => 'true'%>
+  </p>
+  <p>
+  <%= f.submit "Přidat / upravit místo"%>
+  </p>
+  <div id="map"></div>
+  <div id="poloha">
+  <%= @school.name %>
+  <%= @school.street %>
+  <%= @school.town %>
+  </div>
+<%end%>  
