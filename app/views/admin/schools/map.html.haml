@@ -15,4 +15,8 @@
   %p
     -#-%input{:type => 'hidden', :name => 'page', :value => params[:page] }
     = f.submit "Přidat / upravit místo"
-  #map
+#map
+#poloha
+  = @school.name
+  = @school.street
+  = @school.town
