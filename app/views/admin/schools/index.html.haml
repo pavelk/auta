@@ -9,7 +9,7 @@
     - @schools.each do |school|
       %tr{:class => cycle('odd', 'even') }        
         %td= link_to school.name, edit_object_url(school)
-        -#%td= link_to 'mapa', school_map_path(school)
+        %td= link_to 'mapa', school_map_path(school)
         %td= school.street
         %td= school.town
         %td= link_to 'Odstranit', object_url(school), :confirm => 'Jste si jistí?', :method => :delete
@@ -28,7 +28,7 @@
     %tr
       %tr{:class => cycle('odd', 'even') }        
         %td= link_to @school.name, edit_object_url(@school)
-        -#%td= link_to 'mapa', school_map_path(school)
+        %td= link_to 'mapa', school_map_path(school)
         %td= @school.street
         %td= @school.town
       %tr
