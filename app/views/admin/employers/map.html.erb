@@ -1,0 +1,20 @@
+<%= render(:partial => "shared/map_e") %>
+<% form_for @employer, :url => {:action => "add_marker"} do |f|  %>
+  <h1><%= @employer.name %></h1>
+  <%= marker(@employer.lat.to_s, @employer.lng.to_s, @employer.name)%>
+  <p>
+  longtitude:<%= f.text_field :lng, :readonly => 'true'%>
+  </p>
+  <p>
+  latitude:<%= f.text_field :lat, :readonly => 'true'%>
+  </p>
+  <p>
+  <%= f.submit "Přidat / upravit místo"%>
+  </p>
+  <div id="map"></div>
+  <div id="poloha">
+  <%= @employer.name %>
+  <%= @employer.street1 %>
+  <%= @employer.town %>
+  </div>
+<%end%>

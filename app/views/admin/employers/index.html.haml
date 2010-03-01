@@ -9,7 +9,7 @@
     - @collection.each do |object|
       %tr{:class => cycle('odd', 'even') }        
         %td= link_to object.name, edit_object_url(object)
-        -#%td= link_to 'mapa', emp_map_path(object)
+        %td= link_to 'mapa', emp_map_path(object)
         %td= object.street1
         %td= object.town
         %td= link_to 'Odstranit', object_url(object), :confirm => 'Jste si jistí?', :method => :delete
@@ -29,7 +29,7 @@
     %tr
       %tr{:class => cycle('odd', 'even') }        
         %td= link_to @employer.name, edit_object_url(@employer)
-        -#%td= link_to 'mapa', emp_map_path(object)
+        %td= link_to 'mapa', emp_map_path(object)
         %td= @employer.street1
         %td= @employer.town
       %tr
