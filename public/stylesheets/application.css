@@ -2,9 +2,9 @@
 
     Euro RSCG 4D (http://www.eurorscg4d.cz)
 
-    Výstupní zařízení: screen, projection
-    Autor:             Lukáš Tomek (lukas.tomek@eurorscg4D.cz)
-    Vytvořeno:         24/11/2008
+    VĂ˝stupnĂzaĹ™Ă screen, projection
+    Autor:             LukĂˇĹˇ Tomek (lukas.tomek@eurorscg4D.cz)
+    VytvoĹ™eno:         24/11/2008
 
 ---------------------------------------------------------------------------------------------------------- */
 
@@ -136,13 +136,16 @@ a.overlaid,
 
 /* -- Layout -- */
 #view         { width: 960px; margin: 0 auto; }
-#head         { height: 165px; }
+#head         { height: 225px; overflow: hidden; }
 #content      { padding: 15px 0 30px 0; clear: both; }
 #foot         { clear: both; margin: 0 5px; height: 30px; padding: 8px 20px 0; border-top: 1px #dbdbdb solid; }
 
   #head #logo          { width: 580px; height: 138px; float: left; overflow: hidden; }
         #logo h1       { width: 580px; height: 138px; background: url('../images/bg-head.jpg') 244px 0 no-repeat; }
         #logo h1 span  { width: 197px; height: 130px; background: url('../images/bg-logo.gif') no-repeat; }
+        
+  #head #competition { position: absolute; top: 145px; left: 10px; color: #96bc01; font-weight: bold; font-size: 1.2em; }
+        #competition a { color: #96bc01; }
 
   #head #topForm            { width: 320px; float: right; padding: 20px 10px; font-size: .9em; }
         #topForm ul         { padding: 5px 0 15px; border-bottom: 1px #dedede solid; }
@@ -158,7 +161,7 @@ a.overlaid,
         #topForm form label         { margin-right: 5px; }
         #topForm form .button       { width: 120px; padding: 2px 5px; margin-right: 10px; }
 
-  #head #mainMenu                   { position: relative; width: 100%; height: 50px; float: left; margin-top: -8px; z-index: 100000; }
+  #head #mainMenu                   { position: relative; width: 100%; height: 50px; float: left; margin-top: 5px; z-index: 100000; }
         #mainMenu ul                { padding: 50px 8px 0; background: #bb0505 url('../images/bg-menu.jpg') 0 0 no-repeat; }
         #mainMenu li                { float: left; height: 53px; margin-top: -50px; font-weight: bold; text-align: center; text-transform: uppercase; background: url('../images/bg-menu-separator.gif') 12px 3px no-repeat; }
         #mainMenu li a              { display: block; float: left; color: #fff; height: 33px; margin-left: 25px; padding: 18px 0 2px; text-decoration: none; }
