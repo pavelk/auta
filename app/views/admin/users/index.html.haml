@@ -13,7 +13,8 @@
     %td datum narození
     %td počet přihlášení
     %td aktivace
-  - User.find(:all, :conditions => 'urole = 0').each do |object|
+  -#- User.find(:all, :conditions => 'urole = 0').each do |object|
+  - @collection.each do |object| 
     %tr{:class => cycle('odd', 'even') }        
       %td= object.user_name
       %td= object.email
