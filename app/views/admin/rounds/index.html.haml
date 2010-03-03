@@ -1,11 +1,13 @@
 %h1 Soutěžní kola
 %h4
   Celkem
-  = UserRound.count
+  = @rounds.size
   záznamů
 %table
   %tr
   - @rounds.each do |object|
-    %tr
-      %td= "#{object.id}. kolo"
+    %tr{:class => cycle('odd', 'even') } 
+      %td= "#{object.round_id}. kolo"
       %td= object.user.user_name
+      %td= object.user.email
+      %td= object.user.created_at.strftime('%d.%m. / %H:%M:%S')
