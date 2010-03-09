@@ -23,6 +23,7 @@
       %td= od.description
       %td= formatted_date(od.date_from)
       %td= link_to 'Odstranit',  admin_open_door_path(od), :confirm => 'Jste si jistí?', :method => :delete
+      %input{:type => 'hidden', :name => 'schoolid', :value => @object.id}
 %br
 %br
 - @open_door = OpenDoor.new
