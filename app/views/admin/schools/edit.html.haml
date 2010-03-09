@@ -10,6 +10,34 @@
 - form_for(:school, :url => object_url, :html => { :method => :put }) do |f|
   = render :partial => "form", :locals => { :f => f }
   %p= submit_tag "Upravit"
+%label Přidat den otevřených dveří:
+%br
+%br
+%table{:width => '30%'}
+  %tr
+    %th Popis
+    %th Datum
+    %th Odstranit
+  - @object.open_doors.each do |od|
+    %tr
+      %td= od.description
+      %td= formatted_date(od.date_from)
+      %td= link_to 'Odstranit',  admin_open_door_path(od), :confirm => 'Jste si jistí?', :method => :delete
+%br
+%br
+- @open_door = OpenDoor.new
+- form_for @open_door, :url => {:controller => "open_doors", :action => "create"} do |f|
+  %p
+    = f.label :description, 'Popis:'
+    %br 
+    -#= f.text_area :description, :cols => "90", :rows => "5"
+    = f.text_field :description, :size => "90"
+    %br
+    = f.date_select(:date_from, :order => [:day, :month, :year], :use_month_numbers => true, :start_year => 2010)
+    = f.hidden_field(:school_id, :value => @object.id)
+  = f.submit "Přidat den otevřených dveří"  
+%br
+%br
 %label Přidat obrázek:
 %br
 %br

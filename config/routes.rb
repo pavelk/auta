@@ -104,6 +104,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :rounds
     admin.resources :users
     admin.resources :rounds
+    admin.resources :open_doors
   end              
   
   map.school_map 'admin/schools/mapa/:id', :controller => 'admin/schools', :action => 'map'
