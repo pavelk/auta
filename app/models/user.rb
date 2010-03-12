@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
       worksheet.write(0, 1, "Login")
       worksheet.write(0, 2, "Heslo")
 
-      s = Employer.all(:conditions => 'LENGTH(email1) > 1')
+      s = Employer.all(:conditions => 'LENGTH( email1 ) < 1 AND LENGTH( email2 ) > 1')
       row = 1
       s.each do |school|
         psswd = newpass(8)
