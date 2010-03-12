@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
       
         user = User.new 
         user.user_name = school.name 
-        user.email = school.email1
+        user.email = school.email2
         user.birth = '-----'
         user.password = psswd
         user.password_confirmation = psswd
