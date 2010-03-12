@@ -1,106 +1,17 @@
 - @page_title = "Soutěž"
 .col1.main.quiz
-  %h2 Soutěžte a vyhrajte super ceny!
-  %p Chcete vyhrát jednu z řady skvělých cen? Zapojte se do soutěže a zašlete každý týden odpověď na naše otázky. Pro opravdové znalce a milovníky aut to bude hračka. Soutěž bude probíhat celý únor, proto nezapomeňte pravidelně navštěvovat každý týden tyto stránky, abyste nepromeškali žádné kolo soutěžních otázek. Vyhlášení soutěže proběhne do konce března. Pro účast v soutěži je nutná registrace. 
-
+  %h2 Milí soutěžící a příznivci webu Auta nás baví,
+  %p děkujeme vám všem za hojnou účast v naší soutěži, která byla dnešním dnem ukončena. Zde se můžete podívat na jména šťastných výherců cen: 
   %p 
-    Každý týden od pondělka 1.2. po dobu měsíce únor budou připraveny nové otázky. Abyste se mohli zúčastnit soutěže, je nutné zodpovědět všechny otázky. Rozhodující pro výhru bude čas došlých odpovědí a jejich správnost, viz 
-    = link_to 'pravidla.', rules_path
-  
-  - checkfirst = current_user.rounds.find(:first, :conditions => [ 'round_id = ?', @roundfirst.id])
-  - if(checkfirst == nil)
-    %p.red Našli jste soutěž na webu Auta nás baví až nyní? Nevadí! V archivu najdete otázky ze všech kol, do soutěže se můžete zapojit kdykoli. <br />Rozhodující je pak odeslání posledního emailu s odpověďmi na čtvrté kolo otázek a mít vyplněna i předchozí kola. Potřebovat samozřejmě budete i špetku štěstí:-) Držíme vám palce.
-    %p.alt.big="#{@roundfirst.id}.kolo otázek běželo od #{@roundfirst.date_from.strftime('%d.%m.')} do #{@roundfirst.date_till.strftime('%d.%m.')}"
-    %form.formBox{ :action => '/soutez_odpoved', :method => 'post'  }
-      %fieldset
-      - @roundfirst.questions.each do |question|
-        .item
-          %h3.q= question.question
-          - question.answers.each do |answer|
-            .clearfix.a
-              .con
-                %input{ :type => 'radio', :id => "#{question.id}-#{answer.id}", :name => "[answer][#{question.id}]", :value => "#{answer.id}" }
-              .lab
-                %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
-      %input{ :type => 'hidden', :id => "round_id", :name => "round_id", :value => "#{@roundfirst.id}" }
-      %input{ :type => 'hidden', :id => "first", :name => "first", :value => "first" }
-      %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
-  - else
-    -#%p.alt.big V prvním kole jsi soutěžil! Zde jsou otázky z prvního kola s Tvými odpověďmi.
-  %br
-  %br
-  %br
-  
-  - checksec = current_user.rounds.find(:first, :conditions => [ 'round_id = ?', @roundsec.id])
-  - if(checksec == nil)
-    %p.alt.big="#{@roundsec.id}.kolo otázek běželo od #{@roundsec.date_from.strftime('%d.%m.')} do #{@roundsec.date_till.strftime('%d.%m.')}"
-    %form.formBox{ :action => '/soutez_odpoved', :method => 'post'  }
-      %fieldset
-      - @roundsec.questions.each do |question|
-        .item
-          %h3.q= question.question
-          - question.answers.each do |answer|
-            .clearfix.a
-              .con
-                %input{ :type => 'radio', :id => "#{question.id}-#{answer.id}", :name => "[answer][#{question.id}]", :value => "#{answer.id}" }
-              .lab
-                %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
-      %input{ :type => 'hidden', :id => "round_id", :name => "round_id", :value => "#{@roundsec.id}" }
-      %input{ :type => 'hidden', :id => "first", :name => "first", :value => "first" }
-      %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
-  - else
-    -#%p.alt.big V prvním kole jsi soutěžil! Zde jsou otázky z prvního kola s Tvými odpověďmi.
-  %br
-  %br
-  %br
-  
-  - checkth = current_user.rounds.find(:first, :conditions => [ 'round_id = ?', @roundth.id])
-  - if(checkth == nil)
-    %p.alt.big="#{@roundth.id}.kolo otázek běželo od #{@roundth.date_from.strftime('%d.%m.')} do #{@roundth.date_till.strftime('%d.%m.')}"
-    %form.formBox{ :action => '/soutez_odpoved', :method => 'post'  }
-      %fieldset
-      - @roundth.questions.each do |question|
-        .item
-          %h3.q= question.question
-          - question.answers.each do |answer|
-            .clearfix.a
-              .con
-                %input{ :type => 'radio', :id => "#{question.id}-#{answer.id}", :name => "[answer][#{question.id}]", :value => "#{answer.id}" }
-              .lab
-                %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
-      %input{ :type => 'hidden', :id => "round_id", :name => "round_id", :value => "#{@roundth.id}" }
-      %input{ :type => 'hidden', :id => "first", :name => "first", :value => "first" }
-      %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
-  - else
-    -#%p.alt.big V prvním kole jsi soutěžil! Zde jsou otázky z prvního kola s Tvými odpověďmi.
-  %br
-  %br
-  %br
-  
-      
-  %p.alt.big="#{@round.id}.kolo otázek běží od #{@round.date_from.strftime('%d.%m.')} do #{@round.date_till.strftime('%d.%m.')}"
-  .gallery
-    .item= image_tag "/images/soutez-1.jpg"
-    .item= image_tag "/images/soutez-2.jpg"
-    .item= image_tag "/images/soutez-3.jpg"
-  - check = current_user.rounds.find(:first, :conditions => [ 'round_id = ?', @round.id])
-  - if check == nil
-    %form.formBox{ :action => '/soutez_odpoved', :method => 'post'  }
-      %fieldset
-      - @round.questions.each do |question|
-        .item
-          %h3.q= question.question
-          - question.answers.each do |answer|
-            .clearfix.a
-              .con
-                %input{ :type => 'radio', :id => "#{question.id}-#{answer.id}", :name => "[answer][#{question.id}]", :value => "#{answer.id}" }
-              .lab
-                %label{ :for => "#{question.id}-#{answer.id}" }= answer.answer
-      %input{ :type => 'hidden', :id => "round_id", :name => "round_id", :value => "#{@round.id}" }
-      %input{ :type => 'hidden', :id => "first", :name => "first", :value => "second" }
-      %input{ :type => 'submit', :value => 'Odeslat', :class => 'submit' }
-  - else
-    %p V tomto kole jste již soutěžili.
+    %ul
+      %li 1.cenu - notebook Dell Latitude E6400 černý 4/250/W7+XPP si převzal z rukou ředitele Sdružení AP pana Ing. Antonína Šípka Ladislav Nepevný z Brna 
+      %li 2. cena - trackové kolo GT Transeo 1.0 putuje do rukou Davida Tauše z Cerhovic   
+      %li 3. cenu - mobilní telefon Nokia E52 si vybojovala Zuzana Jugová z Valašského Meziříčí 
+      %li 4. cenu - dámský a pánský cyklodres, velikost M, včetně kalhot + krokoměr získává Filip Habr z Prahy 
+      %li 5. cenu - hokejový dres Nike, velikost M + krokoměr získává Kateřina Černá z Obrnic
+  %p Všem výhercům gratulujeme a věříme, že je výhry potěšily. 
+  %p My se těšíme na další setkání s vámi všemi na stránkách Auta nás baví.
+  %p Krásné jaro a štastnou volbu vašeho budoucího povolání vám přeje tým Auta nás baví.
 .col2
   = render :partial => 'shared/box_search'
   = render :partial => 'shared/box_sections'

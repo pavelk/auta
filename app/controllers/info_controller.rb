@@ -1,7 +1,7 @@
 class InfoController < FrontendController
   
   #before_filter :check_authentication, :except => [:competition,:vto_1, :vto_2, :vto_3, :vto_4, :about, :map, :faq, :accesibility, :contact, :download]
-  before_filter :check_authentication, :except => [:rules, :vto_1, :vto_2, :vto_3, :vto_4, :about, :map, :faq, :accesibility, :contact, :download]
+  before_filter :check_authentication, :except => [:rules, :competition, :vto_1, :vto_2, :vto_3, :vto_4, :about, :map, :faq, :accesibility, :contact, :download]
   
   def rules
     add_crumb "Pravidla soutěže"
@@ -10,11 +10,12 @@ class InfoController < FrontendController
   def competition
     add_crumb "Soutěž"
     #debugger
+=begin    
     @roundfirst = Round.first( :conditions => 'id = 1') 
     @roundsec = Round.first( :conditions => 'id = 2')
     @roundth = Round.first( :conditions => 'id = 3') 
-    #@round = Round.first( :conditions => 'date_from < now() AND date_till > now()')
     @round = Round.first( :conditions => 'id = 4') 
+=end  
   end
   
   def competition_submit
