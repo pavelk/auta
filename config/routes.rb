@@ -123,7 +123,7 @@ ActionController::Routing::Routes.draw do |map|
   map.remove_school_image 'admin/schools/remove_image/:object/:id', :controller => 'admin/schools', :action => 'remove_image'
   
   map.add_employer_image 'admin/employers/add_image/:object/:id', :controller => 'admin/blogs', :action => 'add_image'
-  map.remove_employer_image 'admin/employers/remove_image/:object/:id', :controller => 'admin/blogs', :action => 'remove_image'
+  map.remove_employer_image 'admin/employers/remove_image/:object/:id', :controller => 'admin/employers', :action => 'remove_image'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
