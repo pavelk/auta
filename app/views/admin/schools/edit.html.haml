@@ -39,6 +39,14 @@
   = f.submit "Přidat den otevřených dveří"  
 %br
 %br
+%label Přidat uživatele:
+%br
+%br
+- form_for(:school, :url => {:action => "add_user"}) do |f|
+  %input{ :type => 'hidden', :name => 'id', :value => "#{@object.id}" }
+  = f.submit "Přidat uživatele"
+%br
+%br
 %label Přidat obrázek:
 %br
 %br

@@ -10,6 +10,18 @@ class Notifier < ActionMailer::Base
     @content_type = "text/html"
   end
   
+  def new_user(name,psswd)
+    #@recipients   = email
+    @recipients   = "pavel.krusek@gmail.com"
+    @from         = "info@autanasbavi.cz"
+    headers         "Reply-to" => "info@autanasbavi.cz"
+    @subject      = "novy uzivatel"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+    body[:name] = name
+    body[:password] = psswd
+  end
+  
   def activate_account(user)
     subject "Aktivace uctu"
     from "Auta nas bavi <noreply@autanasbavi.cz>"

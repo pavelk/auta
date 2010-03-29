@@ -107,6 +107,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :open_doors
   end              
   
+  map.school_user 'admin/schools/add_user/:id', :controller => 'admin/schools', :action => 'add_user'
+  
   map.school_map 'admin/schools/mapa/:id', :controller => 'admin/schools', :action => 'map'
   map.emp_map 'admin/employers/mapa/:id', :controller => 'admin/employers', :action => 'map'
   
