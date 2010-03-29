@@ -17,7 +17,7 @@ class Admin::SchoolsController < Admin::AdminController
   def add_user
     #debugger
     @school = School.find(params[:id])
-    psswd = newpass(8)
+    psswd = Array.new(8/2) { rand(256) }.pack('C*').unpack('H*').first
     user = User.new 
     user.user_name = @school.name 
     user.email = @school.email1
@@ -60,12 +60,6 @@ class Admin::SchoolsController < Admin::AdminController
         format.html { redirect_to collection_url }
       end
     end
-  end 
-  
-  private
-  
-  def self.newpass(len)
-    Array.new(len/2) { rand(256) }.pack('C*').unpack('H*').first
-  end 
+  end
   
 end
