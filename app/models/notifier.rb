@@ -15,7 +15,7 @@ class Notifier < ActionMailer::Base
     @recipients   = "pavel.krusek@gmail.com"
     @from         = "info@autanasbavi.cz"
     headers         "Reply-to" => "info@autanasbavi.cz"
-    @subject      = "novy uzivatel"
+    @subject      = "Novy uzivatel - autanasbavi.cz"
     @sent_on      = Time.now
     @content_type = "text/html"
     body[:name] = name

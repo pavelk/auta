@@ -10,7 +10,17 @@
 - form_for(:employer, :url => object_url, :html => { :method => :put }) do |f|
   = render :partial => "form", :locals => { :f => f }
   %p= submit_tag "Upravit"
-
+%br
+%br
+- if(@object.user == nil)
+  %label Přidat uživatele:
+  %br
+  %br
+  - form_for(:employer, :url => {:action => "add_user"}) do |f|
+    %input{ :type => 'hidden', :name => 'id', :value => "#{@object.id}" }
+    = f.submit "Přidat uživatele"
+  %br
+  %br
 %label Přidat obrázek:
 %br
 %br
