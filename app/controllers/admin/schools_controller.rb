@@ -30,7 +30,7 @@ class Admin::SchoolsController < Admin::AdminController
     if user.save
       @school.user_id = user.id 
       @school.save
-      Notifier.deliver_new_user(@school.name, psswd)
+      Notifier.deliver_new_user(@school.name, @school.email1, psswd)
       Notifier.deliver_registration_confirmation_school(@school.email1, psswd)
     end
   

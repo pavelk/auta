@@ -30,7 +30,7 @@ class Admin::EmployersController < Admin::AdminController
     if user.save
       @emp.user_id = user.id 
       @emp.save
-      Notifier.deliver_new_user(@emp.name, psswd)
+      Notifier.deliver_new_user(@emp.name, @emp.email1, psswd)
       Notifier.deliver_registration_confirmation_employer(@emp.email1, psswd)
     end
   
