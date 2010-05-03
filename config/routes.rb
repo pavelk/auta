@@ -23,6 +23,8 @@ ActionController::Routing::Routes.draw do |map|
     info.competition 'soutez', :action => 'competition'
     info.rules 'pravidla-souteze', :action => 'rules'
     info.sbmt 'soutez_odpoved', :action => 'competition_submit'
+    info.questionary 'dotaznik', :action => 'questionary'
+    info.sbmt 'dotaznik_odpoved', :action => 'questionary_submit'
   end
   
   ###########

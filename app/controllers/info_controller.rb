@@ -1,11 +1,25 @@
 class InfoController < FrontendController
   
   #before_filter :check_authentication, :except => [:competition,:vto_1, :vto_2, :vto_3, :vto_4, :about, :map, :faq, :accesibility, :contact, :download]
-  before_filter :check_authentication, :except => [:rules, :competition, :vto_1, :vto_2, :vto_3, :vto_4, :about, :map, :faq, :accesibility, :contact, :download]
+  before_filter :check_authentication, :except => [:questionary, :questionary_submit, :rules, :competition, :vto_1, :vto_2, :vto_3, :vto_4, :about, :map, :faq, :accesibility, :contact, :download]
   
   def rules
     add_crumb "Pravidla soutěže"
   end  
+  
+  def questionary
+    add_crumb "Dotazník"
+  end
+  
+  def questionary_submit
+    add_crumb "Děkujeme za odpověď"
+    #debugger
+    params[:answer].each_value do |a|
+       @que = Questionary.new
+       @que.answers = a
+      @que.save!
+    end  
+  end    
   
   def competition
     add_crumb "Soutěž"
