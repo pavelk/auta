@@ -65,10 +65,10 @@
         %p &bdquo;Rozšiřování spolupráce škol a zaměstnavatelů je jednou z klíčových podmínek rozvoje středního odborného vzdělávání v České republice. To se nachází v nelehké situaci a přitom existuje v této oblasti spousta nevyužitého potenciálu. Cestu naznačuje např. Akční plán podpory odborného vzdělávání, který vznikl na MŠMT.
         = link_to 'čtěte více', 'http://new.autanasbavi.cz/aktualita/10-ministryne-skolstvi-phdr-miroslava-kopicova', :class => 'button-more'
 .col2
-  .boxSubmenu
-    %ul
+  -#.boxSubmenu
+    -#%ul
       -#%li.competition= tab_for('Pravidla soutěže', rules_path)
-      %li.competition= tab_for('Podílejte se na tomto webu', questionary_path)     
+      -#%li.competition= tab_for('Podílejte se na tomto webu', questionary_path)     
   = render :partial => 'shared/box_search'
   = render :partial => 'shared/box_open_doors'
   = render :partial => 'shared/box_news', :locals => { :num => 2  }
